@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Data {
-    private static ArrayList<User> users;
+    private static final ArrayList<User> users = new ArrayList<User>();
 
     public static User getUserByUsername(String username) {
         for(User user : Data.users) {

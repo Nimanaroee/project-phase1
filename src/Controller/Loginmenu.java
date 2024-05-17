@@ -9,14 +9,14 @@ public class Loginmenu extends Menu {
     private long lasttime=0, attempt =0;
     public Loginmenu(Scanner scan) {
         super(scan, "LOGIN/SIGNUP MENU", "exit");
-        //// addcommands here
+        //// add commands here
         addCommand(Regex.CREATE_USER, this::register);
         addCommand(Regex.LOGIN, this::login);
         addCommand(Regex.FORGET_PASSWORD, this::forgetPasswordLogin);
     }
 
     private void register(Matcher matcher) {
-        String username = matcher.group("username"), password = matcher.group("password"), confirmpassword = matcher.group("passwordconfirm"), email = matcher.group("email"), nickname = matcher.group("nickname");
+        String username = matcher.group("username"), password = matcher.group("password"), confirmpassword = matcher.group("password-confirm"), email = matcher.group("email"), nickname = matcher.group("nickname");
         if(!Regex.VALID_USERNAME.matches(username)){
             Out.print("Invalid Username!");
             return;
@@ -40,8 +40,7 @@ public class Loginmenu extends Menu {
         if(password.matches("random")) {
 
         }
-        User user = new User(username, password, email, nickname);
-        user = askQuestion(user);
+        User user = askQuestion(new User(username, password, email, nickname));
         if(user == null)
             return;
         captcha();
@@ -54,9 +53,13 @@ public class Loginmenu extends Menu {
         Out.print("• 2-What is your favourite color ?");
         Out.print("• 3-What was the name of your first pet?");
         Matcher matcher = runCommand(Regex.QUESTION_PICK);
+        if(matcher == null)
+            return null;
         while (!matcher.group("answer").equals(matcher.group("confirm"))) {
             Out.print("Invalid answer! try again");
             matcher = runCommand(Regex.QUESTION_PICK);
+            if(matcher == null)
+                return null;
         }
         user.setQuestion(matcher.group("number"));
         user.setAnswer(matcher.group("answer"));

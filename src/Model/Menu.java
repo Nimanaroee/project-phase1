@@ -3,7 +3,6 @@ package Model;
 import Veiw.Out;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
@@ -13,7 +12,7 @@ public abstract class Menu {
     protected final Scanner scan;
     protected final String menuName, exitWord;
 
-    private void showMenu(Matcher matcher) {
+    private void showMenu() {
         Out.print(menuName);
     }
 
@@ -21,7 +20,7 @@ public abstract class Menu {
         this.scan = scanner;
         this.menuName = menuName;
         this.exitWord = exitWord;
-        commands = new ArrayList<Command>();
+        commands = new ArrayList<>();
     }
 
     protected final void addCommand(Regex pattern, Consumer<Matcher> consumer) {
@@ -40,9 +39,7 @@ public abstract class Menu {
         String input = scan.nextLine();
         while (!input.matches(exitWord)) {
             if(regex.matches(input)) {
-                Matcher matcher = regex.getMatcher(input);
-                matcher.matches();
-                return matcher;
+                return regex.getMatcher(input);
             }
             Out.print("Invalid command!");
             input = scan.nextLine();

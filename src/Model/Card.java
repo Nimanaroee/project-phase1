@@ -4,6 +4,6 @@ public class Card {
 
 
     public void getInfo() {
-        //// sout bla bla
+        //// s out bla bla
     }
 }

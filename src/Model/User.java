@@ -5,8 +5,11 @@ import java.util.Spliterator;
 
 public class User {
     private String username, nickname, password, email, question, answer;
-    private int Level=1, hp = 100, xp = 0, gold = 0;
-    private ArrayList<Card> cards;
+    private final int Level=1;
+    private final int hp = 100;
+    private final int xp = 0;
+    private final int gold = 0;
+    private final ArrayList<Card> cards;
 
     public User(String username, String password, String email, String nickname) {
         setUsername(username);
