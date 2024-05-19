@@ -38,8 +38,9 @@ public abstract class Menu {
     public Matcher runCommand(Regex regex) {
         String input = scan.nextLine();
         while (!input.matches(exitWord)) {
-            if(regex.matches(input)) {
-                return regex.getMatcher(input);
+            Matcher matcher = regex.getMatcher(input);
+            if(matcher.matches()) {
+                return matcher;
             }
             Out.print("Invalid command!");
             input = scan.nextLine();
@@ -51,7 +52,8 @@ public abstract class Menu {
         String input = scan.nextLine();
         while(!input.matches(exitWord)) {
             if(!processCommands(input)) {
-                Out.print("Invalid command!");
+                System.out.println(input);
+                Out.print("Invalid input!");
             }
             input = scan.nextLine();
         }
