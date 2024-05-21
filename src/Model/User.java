@@ -8,7 +8,7 @@ public class User {
     private final int Level=1;
     private final int hp = 100;
     private final int xp = 0;
-    private final int gold = 0;
+    private final int gold = 0; ///// set value of goldddd;lsfk;slfk;a
     private final ArrayList<Card> cards;
 
     public User(String username, String password, String email, String nickname) {

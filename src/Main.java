@@ -1,4 +1,5 @@
 import Controller.Loginmenu;
+import Model.Ascii;
 
 import java.util.Scanner;
 
@@ -12,4 +13,6 @@ public class Main {
 user create -u nima -p !Nimaaaaa1 !Nimaaaaa1 -email nimakahd@gmail.com -n nima
 
 question pick -q 1 -a nima -c nima
+
+
  */

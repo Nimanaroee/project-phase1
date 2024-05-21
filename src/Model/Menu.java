@@ -52,7 +52,6 @@ public abstract class Menu {
         String input = scan.nextLine();
         while(!input.matches(exitWord)) {
             if(!processCommands(input)) {
-                System.out.println(input);
                 Out.print("Invalid input!");
             }
             input = scan.nextLine();

@@ -1,13 +1,11 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import Veiw.Out;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.math.*;
-import java.io.IOException;
-import java.util.Random;
-import java.util.regex.Matcher;
+import java.util.Scanner;
+
 
 public class Ascii {
     public static int run() {
@@ -33,7 +31,7 @@ public class Ascii {
         for (int y = 0; y < height; y++) {
             StringBuilder sb = new StringBuilder();
             for (int x = 0; x < width; x++) {
-                sb.append(image.getRGB(x, y) == -16777216 ? " " : "$");
+                sb.append(image.getRGB(x, y) == -16777216 ? " " : "0");
             }
             if (sb.toString().trim().isEmpty()) {
                 continue;
@@ -41,5 +39,15 @@ public class Ascii {
             System.out.println(sb);
         }
         return captcha;
+    }
+    public static void captchaChecker(Scanner scan) {
+        Out.print("ENTER CAPTCHA : ");
+        int captcha = Ascii.run();
+        int inputcaptcha = Integer.parseInt(scan.nextLine());
+        if(inputcaptcha != captcha) {
+            Out.print("WRONG CAPTCHA. TRY AGAIN!");
+            Ascii.captchaChecker(scan);
+            return;
+        }
     }
 }

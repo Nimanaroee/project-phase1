@@ -13,10 +13,10 @@ public class Loginmenu extends Menu {
     public Loginmenu(Scanner scan) {
         super(scan, "LOGIN/SIGNUP MENU", "exit");
         //// add commands here
-        addCommand(Regex.CREATE_USER, this::register);
-        addCommand(Regex.CREATE_USER_WITH_PASSWORD, this::registerWithPassword);
-        addCommand(Regex.LOGIN, this::login);
-        addCommand(Regex.FORGET_PASSWORD, this::forgetPasswordLogin);
+        addCommand(Regex.LOGIN_CREATE_USER, this::register);
+        addCommand(Regex.LOGIN_CREATE_USER_WITH_PASSWORD, this::registerWithPassword);
+        addCommand(Regex.LOGIN_LOGIN, this::login);
+        addCommand(Regex.LOGIN_FORGET_PASSWORD, this::forgetPasswordLogin);
     }
     private void register(Matcher matcher) {
         String username = matcher.group("username"), password = matcher.group("password"), confirmPassword = matcher.group("passwordconfirm"), email = matcher.group("email"), nickname = matcher.group("nickname");
@@ -50,7 +50,7 @@ public class Loginmenu extends Menu {
                 errors += " digit";
             if(password.matches("(^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]$)"))
                 errors += " special character";
-            Out.print("Youre password is weak because :"+errors);
+            Out.print("password is weak because :"+errors);
             return;
         }
         if(!Regex.VALID_EMAIL.matches(email)) {
@@ -62,28 +62,25 @@ public class Loginmenu extends Menu {
             return;
         }
         if(!password.equals(confirmPassword)) {
-            System.out.println("Please confirm your password again!");
+            Out.print("Please confirm your password again!");
             return;
         }
 
         User user = askQuestion(new User(username, password, email, nickname));
         if(user == null)
             return;
-        captchaChecker();
+        Ascii.captchaChecker(scan);
         Data.addUser(user);
-        System.out.println("Account "+username+" created successfully!");
+        Out.print("Account "+username+" created successfully!");
     }
     private User askQuestion(User user) {
-        Out.print("User created successfully. Please choose a security question :");
-        Out.print("• 1-What is your father’s name ?");
-        Out.print("• 2-What is your favourite color ?");
-        Out.print("• 3-What was the name of your first pet?");
-        Matcher matcher = runCommand(Regex.QUESTION_PICK);
+        Out.askQuestion();
+        Matcher matcher = runCommand(Regex.LOGIN_QUESTION_PICK);
         if(matcher == null)
             return null;
         while (!matcher.group("answer").equals(matcher.group("confirm"))) {
             Out.print("Invalid answer! try again");
-            matcher = runCommand(Regex.QUESTION_PICK);
+            matcher = runCommand(Regex.LOGIN_QUESTION_PICK);
             if(matcher == null)
                 return null;
         }
@@ -98,7 +95,6 @@ public class Loginmenu extends Menu {
         char[] NUMBERS = "0123456789".toCharArray();
         char[] ALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*".toCharArray();
         int length = (int)(Math.random()*10+4);
-        System.out.println(length);
         Random rand = new SecureRandom();
         char[] password = new char[length];
         //get the requirements out of the way
@@ -117,25 +113,16 @@ public class Loginmenu extends Menu {
             password[i] = password[randomPosition];
             password[randomPosition] = temp;
         }
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         for(char c : password)
-            ret += c;
-        return ret;
+            ret.append(c);
+        return ret.toString();
     }
-    private void captchaChecker() {
-        Out.print("ENTER CAPTCHA : ");
-        int captcha = Ascii.run();
-        int inputcaptcha = scan.nextInt();
-        if(inputcaptcha != captcha) {
-            Out.print("WRONG CAPTCHA. TRY AGAIN!");
-            captchaChecker();
-            return;
-        }
-    }
+
     private void login(Matcher matcher) {
         long now = System.currentTimeMillis();
         if((now-lasttime) < attempt *5000) {
-            System.out.println("Try again in "+((attempt *5000-(now-lasttime)+999)/1000)+" seconds");
+            Out.print("Try again in "+((attempt *5000-(now-lasttime)+999)/1000)+" seconds");
             return;
         }
         User user = Data.getUserByUsername(matcher.group("username"));
@@ -152,7 +139,8 @@ public class Loginmenu extends Menu {
             return;
         }
         Out.print("user logged in successfully!");
-        new Mainmenu(scan, user).run();
+        Data.setLoggedInUser1(user);
+        new Mainmenu(scan).run();
     }
     private void forgetPasswordLogin(Matcher matcher) {
         User user = Data.getUserByUsername(matcher.group("username"));
@@ -167,6 +155,7 @@ public class Loginmenu extends Menu {
             return;
         }
         Out.print("user logged in successfully!");
-        new Mainmenu(scan, user).run();
+        Data.setLoggedInUser1(user);
+        new Mainmenu(scan).run();
     }
 }
