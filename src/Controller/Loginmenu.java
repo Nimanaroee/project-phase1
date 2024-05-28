@@ -12,6 +12,7 @@ public class Loginmenu extends Menu {
     private long lasttime=0, attempt =0;
     public Loginmenu(Scanner scan) {
         super(scan, "LOGIN/SIGNUP MENU", "exit");
+
         //// add commands here
         addCommand(Regex.LOGIN_CREATE_USER, this::register);
         addCommand(Regex.LOGIN_CREATE_USER_WITH_PASSWORD, this::registerWithPassword);
@@ -40,15 +41,16 @@ public class Loginmenu extends Menu {
         }
         if(!Regex.STRONG_PASSWORD.matches(password)) {
             String errors = "";
+            System.out.println(password+"-"+confirmPassword);
             if(password.length() < 8)
                 errors += " size";
-            if(!password.matches("(^(?=.*[a-z])$)"))
+            if(!password.matches("^(?=.*?[a-z]).*"))
                 errors += " small letter";
-            if(!password.matches("(^(?=.*[A-Z])$)"))
+            if(!password.matches("^(?=.*?[A-Z]).*"))
                 errors += " capital letter";
-            if(!password.matches("(^(?=.*\\d)$)"))
+            if(!password.matches("^(?=.*?[0-9]).*"))
                 errors += " digit";
-            if(password.matches("(^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]$)"))
+            if(!password.matches("^(?=.*?[\\!\\@\\#\\$\\%\\^\\&\\*]).*"))
                 errors += " special character";
             Out.print("password is weak because :"+errors);
             return;
