@@ -28,7 +28,7 @@ public enum Regex {
     PROFILE_SHOW_INFORMATION("Show information"),
     PROFILE_CHANGE_USERNAME("Profile change -u (?<username>.+)"),
     PROFILE_CHANGE_NICKNAME("Profile change -n (?<nickname>.+)"),
-    PROFILE_CHANGE_PASSWORD("profile change password -o (?<old-password>.+) -n (?<new-password>.+)"),
+    PROFILE_CHANGE_PASSWORD("profile change password -o (?<oldpassword>.+) -n (?<newpassword>.+)"),
     PROFILE_CHANGE_EMAIL("profile change -e (?<email>.+)"),
 
     ;

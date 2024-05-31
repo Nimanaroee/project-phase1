@@ -2,7 +2,6 @@ package Controller;
 
 import Model.*;
 import Veiw.Out;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -39,18 +38,18 @@ public class Profilemenu extends Menu {
     }
     private void changePassword(Matcher matcher) {
         User user = Data.getLoggedInUser1();
-        if(!user.getPassword().equals(matcher.group("old-password"))) {
+        if(!user.getPassword().equals(matcher.group("oldpassword"))) {
             Out.print("Current password is incorrect!");
             return;
         }
-        if(user.getPassword().equals(matcher.group("new-password"))) {
+        if(user.getPassword().equals(matcher.group("newpassword"))) {
             Out.print("Please enter a new password!");
         }
-        if(!Regex.PROFILE_CHANGE_PASSWORD.matches(matcher.group("new-password"))) {
+        if(!Regex.PROFILE_CHANGE_PASSWORD.matches(matcher.group("newpassword"))) {
             Out.print("Please enter your new password again");
         }
         Ascii.captchaChecker(scan);
-        user.setPassword(matcher.group("new-password"));
+        user.setPassword(matcher.group("newpassword"));
         Out.print("password changed successfully!");
     }
     private void changeEmail(Matcher matcher) {
