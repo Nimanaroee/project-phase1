@@ -1,6 +1,4 @@
 import Controller.Loginmenu;
-import Model.Ascii;
-
 import java.util.Scanner;
 
 public class Main {
