@@ -32,6 +32,9 @@ public class Mainmenu extends Menu {
             Out.showInfoOfCard(card);
         }
     }
+    private void showUserInfo(Matcher matcher) {
+        Out.showInfoOfUser(Data.getLoggedInUser1());
+    }
     private void showHistory(Matcher matcher) {
 
     }

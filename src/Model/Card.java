@@ -1,18 +1,27 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Card {
     String name;
-    int attack, duration, damage, upgradeLevel, upgradeCoast;
+    int attack, duration, damage, upgradeLevel, upgradeCost;
 
+
+    public Card() {
+
+    }
     public Card(String name, int attack, int duration, int damage, int upgradeLevel, int upgradeCoast) {
         this.name = name;
         this.attack = attack;
         this.duration = duration;
         this.damage = damage;
         this.upgradeLevel = upgradeLevel;
-        this.upgradeCoast = upgradeCoast;
+        this.upgradeCost = upgradeCoast;
     }
 
+    public static boolean validCard(int attack, int duration, int damage) {
+        return (validDefenceAttack(attack) & validDuration(duration) & validDamage(damage));
+    }
     public static boolean validDefenceAttack(int attack) {
         return (10 <= attack && attack <= 100);
     }
@@ -42,8 +51,8 @@ public class Card {
         this.upgradeLevel = upgradeLevel;
         Data.updateCard(this);
     }
-    public void setUpgradeCoast(int upgradeCoast) {
-        this.upgradeCoast = upgradeCoast;
+    public void setUpgradeCoast(int upgradeCost) {
+        this.upgradeCost = upgradeCost;
         Data.updateCard(this);
     }
     public String getName() {
@@ -59,7 +68,7 @@ public class Card {
         return duration;
     }
     public int getUpgradeCoast() {
-        return upgradeCoast;
+        return upgradeCost;
     }
     public int getUpgradeLevel() {
         return upgradeLevel;

@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 public class Profilemenu extends Menu {
     public Profilemenu(Scanner scanner, String menuName) {
         super(scanner, menuName, "back");
+
         addCommand(Regex.PROFILE_SHOW_INFORMATION, this::showInformation);
         addCommand(Regex.PROFILE_CHANGE_USERNAME, this::changeUsername);
         addCommand(Regex.PROFILE_CHANGE_NICKNAME, this::changeNickname);

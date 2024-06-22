@@ -1,5 +1,6 @@
 package Model;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 
 public class Data {
@@ -24,6 +25,7 @@ public class Data {
         Data.users.add(user);
     }
     public static void updateUser(User user) { Data.removeUserByUsername(user.getUsername()); Data.addUser(user); }
+    public static ArrayList<User> getAllUser() {return Data.users;}
 
     //// logged in usernames
     public static User getLoggedInUser1() { return Data.getUserByUsername(loggedInUser1);}

@@ -38,10 +38,10 @@ public class Loginmenu extends Menu {
         }
         if(Data.getUserByUsername(username) != null) {
             Out.print("This username exist, Try another username!");
+            return;
         }
         if(!Regex.STRONG_PASSWORD.matches(password)) {
             String errors = "";
-            System.out.println(password+"-"+confirmPassword);
             if(password.length() < 8)
                 errors += " size";
             if(!password.matches("^(?=.*?[a-z]).*"))
@@ -50,7 +50,7 @@ public class Loginmenu extends Menu {
                 errors += " capital letter";
             if(!password.matches("^(?=.*?[0-9]).*"))
                 errors += " digit";
-            if(!password.matches("^(?=.*?[\\!\\@\\#\\$\\%\\^\\&\\*]).*"))
+            if(!password.matches("^(?=.*?[!@#$%^&*]).*"))
                 errors += " special character";
             Out.print("password is weak because :"+errors);
             return;
@@ -74,6 +74,7 @@ public class Loginmenu extends Menu {
         Ascii.captchaChecker(scan);
         Data.addUser(user);
         Out.print("Account "+username+" created successfully!");
+        ////// starter pack ///////
     }
     private User askQuestion(User user) {
         Out.askQuestion();
@@ -152,7 +153,8 @@ public class Loginmenu extends Menu {
         }
         Out.print(user.getQuestion());
         String input = scan.nextLine();
-        if(!input.equals(user.getPassword())) {
+
+        if(!input.equals(user.getAnswer())) {
             Out.print("Invalid answer!");
             return;
         }

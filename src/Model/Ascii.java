@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Ascii {
-    public static int run() {
+    private static int asciiArt() {
         int width = 200;
         int height = 30;
         int randomleght = (int)(3*Math.random());
@@ -40,9 +40,33 @@ public class Ascii {
         }
         return captcha;
     }
+    private static int func() {
+        int firstNum, secNum, function, answer = 0;
+        firstNum = (int) (10*Math.random()+1);
+        secNum = (int) (10*Math.random()+1);
+        function = (int) (3*Math.random()+1);
+        if(function < 2) {
+            Out.print(firstNum + " + " + secNum + " = ");
+            answer = firstNum+secNum;
+        }
+        else if(function < 3) {
+            Out.print(firstNum + " - " + secNum + " = ");
+            answer = firstNum-secNum;
+        }
+        else if(function <= 4) {
+            Out.print(firstNum + " * " + secNum + " = ");
+            answer = firstNum*secNum;
+        }
+        return answer;
+    }
     public static void captchaChecker(Scanner scan) {
         Out.print("ENTER CAPTCHA : ");
-        int captcha = Ascii.run();
+        int captcha = 0;
+        if((2*Math.random()) > 1)
+            captcha = asciiArt();
+        else
+            captcha = func();
+
         int inputcaptcha = Integer.parseInt(scan.nextLine());
         if(inputcaptcha != captcha) {
             Out.print("WRONG CAPTCHA. TRY AGAIN!");
