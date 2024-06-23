@@ -34,11 +34,26 @@ public enum Regex {
     PROFILE_CHANGE_EMAIL("profile change -e (?<email>.+)"),
 
 
+    //// Shop menu
+    SHOP_SHOW_ALL_CARDS("show all cards"),
+    SHOP_UPGRADE_CARD("upgrade card -n (?<name>.+)"),
+    SHOP_BUY_CARD("buy card -n (?<name>.+)"),
+
+
     /// admin menu
     ADMIN_ADD_CARD("add card -name (?<name>.+) -attack (?<attck>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)"),
     ADMIN_UPDATE_CARD("update card -name (?<name>.+) -attack (?<attck>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)"),
     ADMIN_DELETE_CARD("delete card -name (?<name>.+)"),
     ADMIN_SHOW_PLAYERS("show players"),
+
+
+
+    //// history menu
+    HISTORY_SORT("sort by (?<type>.+)"),
+    HISTORY_NEXT_PAGE("next page"),
+    HISTORY_PREVIOUS("previous page"),
+    HISTORY_NUMBERPAGE("page no (?<number>.+)"),
+
 
     ;
 

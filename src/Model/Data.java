@@ -45,6 +45,6 @@ public class Data {
     public static void removeCardByName(String name) { Data.cards.remove(Data.getCardByCardName(name)); }
     public static void addCard(Card card) { Data.cards.add(card);}
     public static void updateCard(Card card) { Data.removeCardByName(card.name); Data.addCard(card); }
-
+    public static ArrayList<Card> getAllCards() { return Data.cards; }
 
 }

@@ -47,5 +47,11 @@ public class User {
     public int getHp() { return this.hp; }
     public int getXp() { return this.xp; }
     public ArrayList<Card> getCards() { return this.cards; }
-
+    public Card getCardByName(String name) {
+        for(Card card : this.cards) {
+            if(card.getName().equals(name))
+                return card;
+        }
+        return null;
+    }
 }

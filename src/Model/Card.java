@@ -4,7 +4,21 @@ import java.util.ArrayList;
 
 public class Card {
     String name;
-    int attack, duration, damage, upgradeLevel, upgradeCost;
+    int attack;
+    int duration;
+    int damage;
+    int upgradeLevel;
+    int upgradeCost;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    int price;
 
 
     public Card() {

@@ -26,6 +26,10 @@ public class Mainmenu extends Menu {
     private void enterProfileMenu(Matcher matcher) {
         new Profilemenu(scan, "Profile Menu").run();
     }
+    private void showHistory(Matcher matcher) {
+        new Historymenu(scan, "History Menu").run();
+    }
+
     private void showCards(Matcher matcher) {
         ArrayList <Card> cards= Data.getLoggedInUser1().getCards();
         for(Card card : cards) {
@@ -34,9 +38,6 @@ public class Mainmenu extends Menu {
     }
     private void showUserInfo(Matcher matcher) {
         Out.showInfoOfUser(Data.getLoggedInUser1());
-    }
-    private void showHistory(Matcher matcher) {
-
     }
 
 
