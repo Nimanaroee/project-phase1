@@ -7,27 +7,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class Mainmenu extends Menu {
-    public Mainmenu(Scanner scanner) {
+public class MainMenu extends Menu {
+    public MainMenu(Scanner scanner) {
         super(scanner, "Main Menu", "logout");
         addCommand(Regex.MAIN_START_GAME, this::startGame);
         addCommand(Regex.MAIN_SHOW_CARDS, this::showCards);
         addCommand(Regex.MAIN_SHOW_HISTORY, this::showHistory);
+        addCommand(Regex.MAIN_SHOW_USER_INFO, this::showUserInfo);
         addCommand(Regex.MAIN_ENTER_SHOPMENU, this::enterShopMenu);
         addCommand(Regex.MAIN_ENTER_PROFILEMENU, this::enterProfileMenu);
         /// add commands
     }
     private void startGame(Matcher matcher) {
-        new Gamemenu(scan, "Game Menu").run();
+        new PreGameMenu(scan, "Pregame Menu").run();
     }
     private void enterShopMenu(Matcher matcher) {
-        new Shopmenu(scan, "Shop Menu").run();
+        new ShopMenu(scan, "Shop Menu").run();
     }
     private void enterProfileMenu(Matcher matcher) {
-        new Profilemenu(scan, "Profile Menu").run();
+        new ProfileMenu(scan, "Profile Menu").run();
     }
     private void showHistory(Matcher matcher) {
-        new Historymenu(scan, "History Menu").run();
+        new HistoryMenu(scan, "History Menu").run();
+    }
+    private void showUserInfo(Matcher matcher) {
+        Out.showInfoOfUser(Data.getLoggedInUser1());
     }
 
     private void showCards(Matcher matcher) {
@@ -35,9 +39,6 @@ public class Mainmenu extends Menu {
         for(Card card : cards) {
             Out.showInfoOfCard(card);
         }
-    }
-    private void showUserInfo(Matcher matcher) {
-        Out.showInfoOfUser(Data.getLoggedInUser1());
     }
 
 

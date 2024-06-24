@@ -1,6 +1,6 @@
 package Model;
 
-public class Datahistory {
+public class DataHistory {
     String date, resualt, opponentName, opponentLevel, prize;
 
     public String getDate() {

@@ -24,7 +24,6 @@ public enum Regex {
     MAIN_SHOW_HISTORY("show history"),
     MAIN_ENTER_SHOPMENU("enter shop menu"),
     MAIN_ENTER_PROFILEMENU("enter profile menu"),
-    MAIN_LOGOUT("logout"),
 
     //// Profile menu
     PROFILE_SHOW_INFORMATION("Show information"),
@@ -53,6 +52,11 @@ public enum Regex {
     HISTORY_NEXT_PAGE("next page"),
     HISTORY_PREVIOUS("previous page"),
     HISTORY_NUMBERPAGE("page no (?<number>.+)"),
+
+    ///// pre game menu
+    GAME_SELECT_CHARACTER("select character -(?<first>.+) -(?<second>.+)"),
+
+    ///// game menu
 
 
     ;

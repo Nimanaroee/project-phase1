@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class Shopmenu extends Menu {
-    public Shopmenu(Scanner scanner, String menuName) {
+public class ShopMenu extends Menu {
+    public ShopMenu(Scanner scanner, String menuName) {
         super(scanner, menuName, "back");
         addCommand(Regex.SHOP_SHOW_ALL_CARDS, this::showAllCard);
         addCommand(Regex.SHOP_BUY_CARD, this::buyCard);
@@ -29,7 +29,9 @@ public class Shopmenu extends Menu {
             Out.print("not enouph money!");
             return;
         }
-        ///// buy card (((:
+        User user = Data.getLoggedInUser1();
+        user.addCard(card);
+        Out.print("card "+card.getName()+" bought successfully!");
     }
     private void upgradeCard(Matcher matcher) {
         Card card = Data.getLoggedInUser1().getCardByName(matcher.group("name"));
@@ -42,5 +44,6 @@ public class Shopmenu extends Menu {
             return;
         }
         /////// upgrade card (((:
+        /////// idea for upgrading cards //////////
     }
 }

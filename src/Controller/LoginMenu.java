@@ -8,9 +8,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class Loginmenu extends Menu {
+public class LoginMenu extends Menu {
     private long lasttime=0, attempt =0;
-    public Loginmenu(Scanner scan) {
+    public LoginMenu(Scanner scan) {
         super(scan, "LOGIN/SIGNUP MENU", "exit");
 
         //// add commands here
@@ -143,7 +143,7 @@ public class Loginmenu extends Menu {
         }
         Out.print("user logged in successfully!");
         Data.setLoggedInUser1(user);
-        new Mainmenu(scan).run();
+        new MainMenu(scan).run();
     }
     private void forgetPasswordLogin(Matcher matcher) {
         User user = Data.getUserByUsername(matcher.group("username"));
@@ -160,6 +160,6 @@ public class Loginmenu extends Menu {
         }
         Out.print("user logged in successfully!");
         Data.setLoggedInUser1(user);
-        new Mainmenu(scan).run();
+        new MainMenu(scan).run();
     }
 }

@@ -5,8 +5,8 @@ import Veiw.Out;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class Profilemenu extends Menu {
-    public Profilemenu(Scanner scanner, String menuName) {
+public class ProfileMenu extends Menu {
+    public ProfileMenu(Scanner scanner, String menuName) {
         super(scanner, menuName, "back");
 
         addCommand(Regex.PROFILE_SHOW_INFORMATION, this::showInformation);

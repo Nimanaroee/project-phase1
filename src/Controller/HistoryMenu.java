@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Datahistory;
+import Model.DataHistory;
 import Model.Menu;
 import Model.Regex;
 import Veiw.Out;
@@ -9,14 +9,14 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class Historymenu extends Menu {
+public class HistoryMenu extends Menu {
     final static int LENGTH = 5;
     int startPoint = 0;
 
     /////// save game history in this arraylist ////////
-    ArrayList<Datahistory> gameHistory;
+    ArrayList<DataHistory> gameHistory;
 
-    public Historymenu(Scanner scanner, String menuName) {
+    public HistoryMenu(Scanner scanner, String menuName) {
         super(scanner, menuName, "back");
         //// add command
         addCommand(Regex.HISTORY_SORT, this::sortBy);
@@ -26,16 +26,12 @@ public class Historymenu extends Menu {
     }
     private void sortBy(Matcher matcher) {
         String type = matcher.group("type");
-        if(type.equals("date"))
-            gameHistory.sort(Comparator.comparing(Datahistory::getDate));
-        else if(type.equals("resualt"))
-            gameHistory.sort(Comparator.comparing(Datahistory::getResualt));
-        else if(type.equals("opponent-name"))
-            gameHistory.sort(Comparator.comparing(Datahistory::getOpponentName));
-        else if(type.equals("opponent-level"))
-            gameHistory.sort(Comparator.comparing(Datahistory::getOpponentLevel));
-        else
-            gameHistory.sort(Comparator.comparing(Datahistory::getDate));
+        switch (type) {
+            case "resualt" -> gameHistory.sort(Comparator.comparing(DataHistory::getResualt));
+            case "opponent-name" -> gameHistory.sort(Comparator.comparing(DataHistory::getOpponentName));
+            case "opponent-level" -> gameHistory.sort(Comparator.comparing(DataHistory::getOpponentLevel));
+            default -> gameHistory.sort(Comparator.comparing(DataHistory::getDate));
+        }
 
         startPoint = 0;
         show();
@@ -58,7 +54,7 @@ public class Historymenu extends Menu {
     }
     private void show() {
         for(int i=startPoint ; i<startPoint+LENGTH ; i++) {
-            Datahistory datahistory = gameHistory.get(i);
+            DataHistory datahistory = gameHistory.get(i);
             Out.print(datahistory.getDate() + " -- " + datahistory.getResualt() + " -- " + datahistory.getOpponentName() + "  " + datahistory.getOpponentLevel() + " -- " + datahistory.getPrize());
         }
     }

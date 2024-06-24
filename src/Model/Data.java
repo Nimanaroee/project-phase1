@@ -33,7 +33,6 @@ public class Data {
     public static void setLoggedInUser1(User user) { loggedInUser1 = user.getUsername(); }
     public static void setLoggedInUser2(User user) { loggedInUser2 = user.getUsername(); }
 
-
     //// card
     public static Card getCardByCardName(String name) {
         for(Card card : Data.cards) {

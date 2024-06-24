@@ -9,15 +9,6 @@ public class Card {
     int damage;
     int upgradeLevel;
     int upgradeCost;
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     int price;
 
 
@@ -69,6 +60,10 @@ public class Card {
         this.upgradeCost = upgradeCost;
         Data.updateCard(this);
     }
+    public void setPrice(int price) {
+        this.price = price;
+        Data.updateCard(this);
+    }
     public String getName() {
         return this.name;
     }
@@ -87,5 +82,7 @@ public class Card {
     public int getUpgradeLevel() {
         return upgradeLevel;
     }
-
+    public int getPrice() {
+        return price;
+    }
 }

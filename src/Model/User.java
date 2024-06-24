@@ -25,11 +25,13 @@ public class User {
     public void setEmail(String email) { this.email = email; Data.updateUser(this); }
     public void setQuestion(String question) { this.question = question; Data.updateUser(this); }
     public void setAnswer(String answer) { this.answer = answer; Data.updateUser(this); }
+    public void addCard(Card card) { this.cards.add(card); Data.updateUser(this);}
+
+    ///////// after game update //////////
     public void updateLevel() {}
     public void updateXp() {}
     public void updateHp() {}
     public void updateGold() {}
-    public void addCard(Card card) { this.cards.add(card);}
     public String getUsername() {
         return this.username;
     }
