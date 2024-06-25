@@ -2,14 +2,15 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Spliterator;
+import java.util.logging.Level;
 
 public class User {
     private String username, nickname, password, email, question, answer;
-    private final int Level=1;
-    private final int hp = 100;
-    private final int xp = 0;
-    private final int gold = 0; ///// set value of goldddd;lsfk;slfk;a
-    private final ArrayList<Card> cards;
+    private  int Level=1;
+    private  int hp = 100;
+    private  int xp = 0;
+    private  int gold = 0; ///// set value of goldddd;lsfk;slfk;a
+    private ArrayList<Card> cards;
 
     public User(String username, String password, String email, String nickname) {
         setUsername(username);
@@ -17,6 +18,27 @@ public class User {
         setEmail(email);
         setNickname(nickname);
         cards = new ArrayList<Card>();
+    }
+
+    public User(String data) {
+
+
+    }
+
+    public User(String username, String password, String email, int score, int coins, Card cards, String nickname, String question, String answer) {
+        setUsername(username);
+        setPassword(password);
+        setEmail(email);
+        setXp(score);
+        setGold(coins);
+        addCard(cards);
+    }
+
+    public void setGold(int coins) {
+        this.gold = coins;
+    }
+    private void setXp(int score) {
+        this.xp = score;
     }
 
     public void setUsername(String username) { this.username = username; Data.updateUser(this); }
@@ -56,4 +78,13 @@ public class User {
         }
         return null;
     }
+
+    public String getXP() {
+        return String.valueOf(this.xp);
+    }
+
+    public String getCoins() {
+        return String.valueOf(this.gold);
+    }
+
 }

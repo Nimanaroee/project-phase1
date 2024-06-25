@@ -15,8 +15,8 @@ public class DataHistory {
         return resualt;
     }
 
-    public void setResualt(String resualt) {
-        this.resualt = resualt;
+    public void setResult(String result) {
+        this.resualt = result;
     }
 
     public String getOpponentName() {
