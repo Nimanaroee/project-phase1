@@ -1,0 +1,15 @@
+{"name":"stealth−support","attack":15,"duration":1,"damage":10,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"swift−justice","attack":52,"duration":1,"damage":36,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"ultra−sonic−brust","attack":20,"duration":2,"damage":33,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"ion−blast","attack":10,"duration":2,"damage":27,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"biker−support","attack":45,"duration":3,"damage":20,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"sonar−strike","attack":28,"duration":2,"damage":16,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"from−the−hip","attack":45,"duration":1,"damage":25,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"low−blow","attack":25,"duration":1,"damage":36,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"side−winder","attack":35,"duration":2,"damage":26,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"acid−evaporation","attack":35,"duration":2,"damage":30,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"bullet−strike","attack":25,"duration":3,"damage":33,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"poison−dispersal","attack":20,"duration":4,"damage":29,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"cryo−meltdown","attack":28,"duration":2,"damage":20,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"flash−pellets","attack":20,"duration":2,"damage":27,"upgradeLevel":1,"upgradeCost":10,"price":0}
+{"name":"ion−brust","attack":28,"duration":3,"damage":28,"upgradeLevel":1,"upgradeCost":10,"price":0}

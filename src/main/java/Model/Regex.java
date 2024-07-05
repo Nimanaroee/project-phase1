@@ -18,6 +18,7 @@ public enum Regex {
     LOGIN_QUESTION_PICK("question pick -q (?<number>[0-9]+) -a (?<answer>.+) -c (?<confirm>.+)"),
     LOGIN_FORGET_PASSWORD("Forgot my password -u (?<username>.+)"),
     LOGIN_LOGIN("user login -u (?<username>.+) -p (?<password>.+)"),
+    LOGIN_ADMIN("user login admin admin"),
 
     //// Main menu
     MAIN_START_GAME("start game"),
@@ -42,11 +43,11 @@ public enum Regex {
 
 
     /// admin menu
-    ADMIN_ADD_CARD("add card -name (?<name>.+) -attack (?<attck>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)"),
+    ADMIN_ADD_CARD("add card -name (?<name>.+) -attack (?<attack>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)"),
     ADMIN_UPDATE_CARD("update card -name (?<name>.+) -attack (?<attck>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)"),
     ADMIN_DELETE_CARD("delete card -name (?<name>.+)"),
     ADMIN_SHOW_PLAYERS("show players"),
-
+    ADMIN_SHOW_CARDS("show cards"),
 
 
     //// history menu
@@ -59,6 +60,9 @@ public enum Regex {
     GAME_SELECT_CHARACTER("select character -(?<first>.+) -(?<second>.+)"),
 
     ///// game menu
+    SHOW_HAND_CARDS("show hand cards"),
+    SHOW_GAME_BOARD("show game board"),
+    SELECT_CARD("select card -number (?<number>.+)"),
 
 
     ;

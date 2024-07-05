@@ -30,8 +30,28 @@ public class PreGameMenu extends Menu {
         String secondCharacter = matcher.group("second");
 
         ///// check valid characters //////
+        ///// select cards ///////
+        ///// مشخص کردن دک و کارت های هر بازیکن داخل ایف های خطوط پایینی
 
-        ///// select cardss ///////
+        if (firstCharacter.equals("1")) {
+
+        } else if(firstCharacter.equals("2")) {
+
+        } else if(firstCharacter.equals("3")) {
+
+        } else {
+
+        }
+        if (secondCharacter.equals("1")) {
+
+        } else if(secondCharacter.equals("2")) {
+
+        } else if(secondCharacter.equals("3")) {
+
+        } else {
+
+        }
+
 
         new GameMenu(scan, "Game Menu").run();
     }

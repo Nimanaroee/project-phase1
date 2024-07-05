@@ -16,6 +16,7 @@ public class Admin extends Menu {
         addCommand(Regex.ADMIN_UPDATE_CARD, this::updateCard);
         addCommand(Regex.ADMIN_DELETE_CARD, this::deleteCard);
         addCommand(Regex.ADMIN_SHOW_PLAYERS, this::showPlayers);
+        addCommand(Regex.ADMIN_SHOW_CARDS, this::showCards);
     }
     private void addCard(Matcher matcher) {
         String name = matcher.group("name");
@@ -24,12 +25,18 @@ public class Admin extends Menu {
                 damage = Integer.parseInt(matcher.group("damage")),
                 upgradeLevel = Integer.parseInt(matcher.group("upgradeLevel")),
                 upgradeCost = Integer.parseInt(matcher.group("upgradeCost"));
+
+        if(Data.getCardByCardName(name) != null) {
+            Out.print("this name exists! try another name");
+            return;
+        }
         if(!Card.validCard(attack, duration, damage)) {
             Out.print("invalid card!");
             return;
         }
         Card card = new Card(name, attack, duration, damage, upgradeLevel, upgradeCost);
         Data.addCard(card);
+        Out.print("card added successfully!");
         ////// tamam ?!
     }
     private void updateCard(Matcher matcher) {
@@ -65,4 +72,50 @@ public class Admin extends Menu {
             Out.showInfoOfUser(user);
         }
     }
+    private void showCards(Matcher matcher) {
+        ArrayList<Card> cards = Data.getAllCards();
+        for(Card card : cards) {
+            Out.showInfoOfCard(card);
+        }
+    }
 }
+
+/*
+add card -name                 -attack    -duration   -damage    -upgradeLevel   -upgradeCost
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name swift−justice -attack 52 -duration 1 -damage 36 -upgradeLevel 1 -upgradeCost 10
+add card -name ultra−sonic−brust -attack 20 -duration 2 -damage 33 -upgradeLevel 1 -upgradeCost 10
+add card -name ion−blast -attack 10 -duration 2 -damage 27 -upgradeLevel 1 -upgradeCost 10
+add card -name biker−support -attack 45 -duration 3 -damage 20 -upgradeLevel 1 -upgradeCost 10
+add card -name sonar−strike -attack 28 -duration 2 -damage 16 -upgradeLevel 1 -upgradeCost 10
+add card -name from−the−hip -attack 45 -duration 1 -damage 25 -upgradeLevel 1 -upgradeCost 10
+add card -name low−blow -attack 25 -duration 1 -damage 36 -upgradeLevel 1 -upgradeCost 10
+add card -name side−winder -attack 35 -duration 2 -damage 26 -upgradeLevel 1 -upgradeCost 10
+add card -name acid−evaporation -attack 35 -duration 2 -damage 30 -upgradeLevel 1 -upgradeCost 10
+add card -name bullet−strike -attack 25 -duration 3 -damage 33 -upgradeLevel 1 -upgradeCost 10
+add card -name poison−dispersal -attack 20 -duration 4 -damage 29 -upgradeLevel 1 -upgradeCost 10
+add card -name cryo−meltdown -attack 28 -duration 2 -damage 20 -upgradeLevel 1 -upgradeCost 10
+add card -name flash−pellets -attack 20 -duration 2 -damage 27 -upgradeLevel 1 -upgradeCost 10
+add card -name ion−brust -attack 28 -duration 3 -damage 28 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+add card -name stealth−support -attack 15 -duration 1 -damage 10 -upgradeLevel 1 -upgradeCost 10
+
+
+
+ */

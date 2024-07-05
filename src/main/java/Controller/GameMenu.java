@@ -12,10 +12,12 @@ public class GameMenu extends Menu {
         grid = new Block[2][21];
         round = 1;
         turn = (int)(0.8*Math.random());
+
         ///// random remover grid
         ///// random shuffle cards
         //// show game board
 
         //// add command
+        //// اضافه شدن دستورات داخل بازی یا صدا شدن آنها از پکیج game داخل اینجا ( یعنی کل فایلی که زدی رو اونجا کپی کن و بعدش اینجا کامندش رو صدا کن )
     }
 }

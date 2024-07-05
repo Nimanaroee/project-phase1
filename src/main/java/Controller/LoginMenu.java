@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import Veiw.Out;
+import javafx.css.Match;
 
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -31,6 +32,7 @@ public class LoginMenu extends Menu {
         });
         addCommand(Regex.LOGIN_LOGIN, this::login);
         addCommand(Regex.LOGIN_FORGET_PASSWORD, this::forgetPasswordLogin);
+        addCommand(Regex.LOGIN_ADMIN, this::loginAdmin);
         lasttime = 0;
     }
     private void register(Matcher matcher) throws IOException {
@@ -174,5 +176,8 @@ public class LoginMenu extends Menu {
         Out.print("user logged in successfully!");
         Data.setLoggedInUser1(user);
         new MainMenu(scan).run();
+    }
+    private void loginAdmin(Matcher matcher) {
+        new Admin(scan).run();
     }
 }

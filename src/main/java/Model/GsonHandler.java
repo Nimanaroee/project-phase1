@@ -30,10 +30,14 @@ public class GsonHandler {
         gsonUser = builder.create();
         try {
             FileWriter writer = new FileWriter("src/main/resources/users.json");
+            BufferedWriter out = new BufferedWriter(writer);
             writer.flush();
             ArrayList<User> users = Data.getAllUser();
-            for(User user : users)
-                writer.write(gsonUser.toJson(user));
+            for(User user : users) {
+                out.write(gsonUser.toJson(user));
+                out.newLine();
+            }
+            out.close();
             writer.close();
         } catch (IOException e) {e.printStackTrace();}
 
@@ -59,9 +63,13 @@ public class GsonHandler {
         gsonCard = builder.create();
         try {
             FileWriter writer = new FileWriter("src/main/resources/cards.json");
+            BufferedWriter out = new BufferedWriter(writer);
             ArrayList<Card> cards = Data.getAllCards();
-            for(Card card : cards)
-                writer.write(gsonCard.toJson(card));
+            for(Card card : cards) {
+                out.write(gsonCard.toJson(card));
+                out.newLine();
+            }
+            out.close();
             writer.close();
         } catch (IOException e) { e.printStackTrace(); };
     }
