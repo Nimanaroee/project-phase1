@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload" />
+    <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/game/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/game/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/game/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/game/SpecialCard$SpecialCardType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/game/SpecialCard$SpecialCardType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/game/SpecialCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/game/SpecialCard.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +32,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ParMosha"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="15ac22b9-c876-44f6-9986-2621d379cdf6" />
+        <option name="url" value="https://github.com/Nimanaroee/project-phase1" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -93,7 +116,7 @@
       <workItem from="1720100707984" duration="1797000" />
       <workItem from="1720179849642" duration="3224000" />
       <workItem from="1720247676910" duration="7213000" />
-      <workItem from="1720257616617" duration="888000" />
+      <workItem from="1720257616617" duration="2959000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1720093063089</created>
@@ -117,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720258487424</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1720258520006</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720258520006</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -21,15 +21,24 @@ public class SpecialCard extends Card {
     public void play(GameBoard board, int position, Player playingPlayer, Player effectedPlayer) {
         switch (type) {
             case BOMB:
-                //dorost kardan
-                Card effectedCard = board.getCard(effectedPlayer, position);
-                effectedCard.nerfDefence(defense);
-                effectedCard.nerfDamage(attack);
+                for (int k = 0; k < this.getWidth(); k++) {
+                    Card card = board.getCard(effectedPlayer, k);
+                    if (card == null) {
+                        continue;
+                    }
+                    card.setDefense(card.getDefense() - this.attack);
+                    if (card.getDefense() <= 0)
+                        board.getBoard(effectedPlayer).remove(k);
+                }
                 break;
             case SHIELD:
-                //dorost kardan
-                effectedCard = board.getCard(playingPlayer, position);
-                effectedCard.buffDefence(defense);
+                for (int k = 0; k < this.getWidth(); k++) {
+                    Card card = board.getCard(playingPlayer, k);
+                    if (card == null) {
+                        continue;
+                    }
+                    card.buffDefence(this.defense);
+                }
                 break;
             case HEAL:
                 playingPlayer.heal(10);

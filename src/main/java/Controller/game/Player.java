@@ -149,6 +149,7 @@ public class Player {
             System.out.println("Invalid index");
             selectSpecialCardToPlay();
         }
+        hand.remove(cardIndex);
         return (SpecialCard) specialCards.remove(cardIndex);
 
     }

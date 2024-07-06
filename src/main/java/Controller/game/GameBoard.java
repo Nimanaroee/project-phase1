@@ -60,7 +60,7 @@ public class GameBoard {
                 if (position + i >= 20) {
                     allOfCardCanBePlaced = false;
                 } else {
-                    if (player1Board.get(position + i) != null) {
+                    if (player2Board.get(position + i) != null) {
                         allOfCardCanBePlaced = false;
                         break;
                     }
