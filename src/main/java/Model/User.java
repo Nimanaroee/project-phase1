@@ -1,9 +1,6 @@
 package Model;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Spliterator;
-import java.util.logging.Level;
 
 public class User {
     private String username, nickname, password, email, question, answer;
@@ -11,7 +8,7 @@ public class User {
     private  int hp = 100;
     private  int xp = 0;
     private  int gold = 0; ///// set value of gold
-    private ArrayList<Card> cards;
+    private ArrayList<CardModel> cardModels;
     private ArrayList<DataHistory> histories;
 
     public User(String username, String password, String email, String nickname) {
@@ -19,7 +16,7 @@ public class User {
         setPassword(password);
         setEmail(email);
         setNickname(nickname);
-        cards = new ArrayList<Card>();
+        cardModels = new ArrayList<CardModel>();
         histories = new ArrayList<>();
     }
 
@@ -66,8 +63,8 @@ public class User {
         this.answer = answer;
         Data.updateUser(this);
     }
-    public void addCard(Card card) {
-        this.cards.add(card);
+    public void addCard(CardModel cardModel) {
+        this.cardModels.add(cardModel);
         Data.updateUser(this);
     }
     public void addHistory(DataHistory history) {
@@ -96,7 +93,7 @@ public class User {
     public int getGold() { return this.gold; }
     public int getHp() { return this.hp; }
     public int getXp() { return this.xp; }
-    public ArrayList<Card> getCards() { return this.cards; }
+    public ArrayList<CardModel> getCards() { return this.cardModels; }
     public String getXP() {
         return String.valueOf(this.xp);
     }
@@ -108,10 +105,10 @@ public class User {
     public ArrayList<DataHistory> getHistories() {
         return this.histories;
     }
-    public Card getCardByName(String name) {
-        for(Card card : this.cards) {
-            if(card.getName().equals(name))
-                return card;
+    public CardModel getCardByName(String name) {
+        for(CardModel cardModel : this.cardModels) {
+            if(cardModel.getName().equals(name))
+                return cardModel;
         }
         return null;
     }

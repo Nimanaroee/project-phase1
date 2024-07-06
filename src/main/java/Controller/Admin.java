@@ -3,7 +3,6 @@ package Controller;
 import Model.*;
 import Veiw.Out;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -30,19 +29,19 @@ public class Admin extends Menu {
             Out.print("this name exists! try another name");
             return;
         }
-        if(!Card.validCard(attack, duration, damage)) {
+        if(!CardModel.validCard(attack, duration, damage)) {
             Out.print("invalid card!");
             return;
         }
-        Card card = new Card(name, attack, duration, damage, upgradeLevel, upgradeCost);
-        Data.addCard(card);
+        CardModel cardModel = new CardModel(name, attack, duration, damage, upgradeLevel, upgradeCost);
+        Data.addCard(cardModel);
         Out.print("card added successfully!");
         ////// tamam ?!
     }
     private void updateCard(Matcher matcher) {
         String name = matcher.group("name");
-        Card card = Data.getCardByCardName(name);
-        if(card == null) {
+        CardModel cardModel = Data.getCardByCardName(name);
+        if(cardModel == null) {
             Out.print("invalid name!");
             return;
         }
@@ -52,14 +51,14 @@ public class Admin extends Menu {
                 upgradeLevel = Integer.parseInt(matcher.group("upgradeLevel")),
                 upgradeCost = Integer.parseInt(matcher.group("upgradeCost"));
 
-        card = new Card(name, attack, duration, damage, upgradeLevel, upgradeCost);
-        Data.updateCard(card);
+        cardModel = new CardModel(name, attack, duration, damage, upgradeLevel, upgradeCost);
+        Data.updateCard(cardModel);
         ////// tamam ?!
     }
     private void deleteCard(Matcher matcher) {
         String name = matcher.group("name");
-        Card card = Data.getCardByCardName(name);
-        if(card == null) {
+        CardModel cardModel = Data.getCardByCardName(name);
+        if(cardModel == null) {
             Out.print("invalid card name!");
             return;
         }
@@ -73,9 +72,9 @@ public class Admin extends Menu {
         }
     }
     private void showCards(Matcher matcher) {
-        ArrayList<Card> cards = Data.getAllCards();
-        for(Card card : cards) {
-            Out.showInfoOfCard(card);
+        ArrayList<CardModel> cardModels = Data.getAllCards();
+        for(CardModel cardModel : cardModels) {
+            Out.showInfoOfCard(cardModel);
         }
     }
 }

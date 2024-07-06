@@ -4,12 +4,15 @@ import Model.User;
 
 import java.util.Scanner;
 
+import Controller.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Data.gsonHandler.readUserJSON();
         Data.gsonHandler.readCardJSON();
-        new LoginMenu(scanner).run();
+//        new LoginMenu(scanner).run();
+        new Controller.game.Game().start();
     }
 }
 /*

@@ -1,14 +1,10 @@
 package Model;
 
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 
 public class Data {
     private static ArrayList<User> users = new ArrayList<>();
-    private static ArrayList<Card> cards = new ArrayList<>();
+    private static ArrayList<CardModel> cardModels = new ArrayList<>();
     private static String loggedInUser1 = null;
     private static String loggedInUser2 = null;
     public static GsonHandler gsonHandler = new GsonHandler();
@@ -42,17 +38,17 @@ public class Data {
     public static void setLoggedInUser2(User user) { loggedInUser2 = user.getUsername(); }
 
     //// card
-    public static Card getCardByCardName(String name) {
-        for(Card card : Data.cards) {
-            if(card.getName().equals(name))
-                return card;
+    public static CardModel getCardByCardName(String name) {
+        for(CardModel cardModel : Data.cardModels) {
+            if(cardModel.getName().equals(name))
+                return cardModel;
         }
         return null;
     }
-    public static void removeCardByName(String name) { Data.cards.remove(Data.getCardByCardName(name)); }
-    public static void addCard(Card card) { Data.cards.add(card); Data.gsonHandler.saveCardGson();}
-    public static void updateCard(Card card) { Data.removeCardByName(card.name); Data.addCard(card); }
-    public static ArrayList<Card> getAllCards() { return Data.cards; }
-    public static void setAllCards(ArrayList<Card> cards) { Data.cards = cards; }
+    public static void removeCardByName(String name) { Data.cardModels.remove(Data.getCardByCardName(name)); }
+    public static void addCard(CardModel cardModel) { Data.cardModels.add(cardModel); Data.gsonHandler.saveCardGson();}
+    public static void updateCard(CardModel cardModel) { Data.removeCardByName(cardModel.name); Data.addCard(cardModel); }
+    public static ArrayList<CardModel> getAllCards() { return Data.cardModels; }
+    public static void setAllCards(ArrayList<CardModel> cardModels) { Data.cardModels = cardModels; }
 
 }

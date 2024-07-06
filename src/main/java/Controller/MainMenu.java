@@ -35,9 +35,9 @@ public class MainMenu extends Menu {
     }
 
     private void showCards(Matcher matcher) {
-        ArrayList <Card> cards= Data.getLoggedInUser1().getCards();
-        for(Card card : cards) {
-            Out.showInfoOfCard(card);
+        ArrayList <CardModel> cardModels = Data.getLoggedInUser1().getCards();
+        for(CardModel cardModel : cardModels) {
+            Out.showInfoOfCard(cardModel);
         }
     }
 

@@ -5,34 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CardToCardConvertor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/CoinManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Deck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/UIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/GameMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ShopMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ShopMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/CardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Regex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Veiw/Out.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Veiw/Out.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/GameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/GameMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/LoginMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/LoginMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/PreGameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/PreGameMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/ShopMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/ShopMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Data.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/GsonHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/GsonHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Regex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Regex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Veiw/Out.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Veiw/Out.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2imPiN8rzxwmaT8njg96CC8twLp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -41,16 +72,51 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Battlesheet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +129,8 @@
       <workItem from="1720093152582" duration="841000" />
       <workItem from="1720100707984" duration="1797000" />
       <workItem from="1720179849642" duration="3224000" />
+      <workItem from="1720247676910" duration="7213000" />
+      <workItem from="1720257616617" duration="552000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1720093063089</created>

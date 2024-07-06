@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import Veiw.Out;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -13,33 +14,36 @@ public class ShopMenu extends Menu {
         addCommand(Regex.SHOP_BUY_CARD, this::buyCard);
         addCommand(Regex.SHOP_UPGRADE_CARD, this::upgradeCard);
     }
+
     private void showAllCard(Matcher matcher) {
-        ArrayList<Card> cards = Data.getAllCards();
-        for(Card card : cards) {
-            Out.showInfoOfCard(card);
+        ArrayList<CardModel> cardModels = Data.getAllCards();
+        for (CardModel cardModel : cardModels) {
+            Out.showInfoOfCard(cardModel);
         }
     }
+
     private void buyCard(Matcher matcher) {
-        Card card = Data.getCardByCardName(matcher.group("name"));
-        if(card == null ) {
+        CardModel cardModel = Data.getCardByCardName(matcher.group("name"));
+        if (cardModel == null) {
             Out.print("wrong card name !");
             return;
         }
-        if(Data.getLoggedInUser1().getGold() < card.getPrice()) {
+        if (Data.getLoggedInUser1().getGold() < cardModel.getPrice()) {
             Out.print("not enouph money!");
             return;
         }
         User user = Data.getLoggedInUser1();
-        user.addCard(card);
-        Out.print("card "+card.getName()+" bought successfully!");
+        user.addCard(cardModel);
+        Out.print("card " + cardModel.getName() + " bought successfully!");
     }
+
     private void upgradeCard(Matcher matcher) {
-        Card card = Data.getLoggedInUser1().getCardByName(matcher.group("name"));
-        if(card == null) {
+        CardModel cardModel = Data.getLoggedInUser1().getCardByName(matcher.group("name"));
+        if (cardModel == null) {
             Out.print("wrong card name !");
             return;
         }
-        if(Data.getLoggedInUser1().getGold() < card.getUpgradeCoast()) {
+        if (Data.getLoggedInUser1().getGold() < cardModel.getUpgradeCost()) {
             Out.print("not enouph money!");
             return;
         }
