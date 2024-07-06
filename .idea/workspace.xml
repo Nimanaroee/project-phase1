@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CardToCardConvertor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/CoinManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/game/UIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ShopMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ShopMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/CardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Veiw/Out.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Veiw/Out.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/GameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/GameMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/LoginMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/LoginMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/PreGameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/PreGameMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/ShopMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/ShopMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Card.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/GsonHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/GsonHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Regex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Regex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Veiw/Out.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Veiw/Out.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards.json" afterDir="false" />
-    </list>
+    <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +93,7 @@
       <workItem from="1720100707984" duration="1797000" />
       <workItem from="1720179849642" duration="3224000" />
       <workItem from="1720247676910" duration="7213000" />
-      <workItem from="1720257616617" duration="552000" />
+      <workItem from="1720257616617" duration="888000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1720093063089</created>
@@ -146,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720093275896</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1720258487424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720258487424</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
