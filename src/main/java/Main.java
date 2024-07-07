@@ -11,8 +11,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Data.gsonHandler.readUserJSON();
         Data.gsonHandler.readCardJSON();
-//        new LoginMenu(scanner).run();
-        new Controller.game.Game().start();
+        new LoginMenu(scanner).run();
+        //new Controller.game.Game().start();
     }
 }
 /*
@@ -25,6 +25,8 @@ question pick -q 1 -a nima -c nima
 Forgot my password -u nima
 
 user login -u nima -p !Nimaaaaa1
+
+user login -u parham -p !Parhammmm1
 
 
  */

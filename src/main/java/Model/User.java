@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.game.Card;
+
 import java.util.ArrayList;
 
 public class User {
@@ -160,9 +162,9 @@ public class User {
         GsonHandler gsonHandler = new GsonHandler();
         Integer Character = getCharacter();
         ArrayList<CardModel> cards = gsonHandler.readCardJSON();
-        cards.forEach(card -> {
-            if (!card.getName().contains(Character.toString())) {
-                cards.remove(card);
+        cards.forEach(cardModel -> {
+            if (cardModel.getName().contains(Character.toString())) {
+                cardModels.add(cardModel);
             }
         });
 
