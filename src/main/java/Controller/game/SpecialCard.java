@@ -44,12 +44,10 @@ public class SpecialCard extends Card {
                 playingPlayer.heal(10);
                 break;
             case ROUNDSETBACKER:
-                //dorost kardan
-//                game.setCurrentRound(game.getCurrentRound() - 1);
+                playingPlayer.getGame().setCurrentRound(playingPlayer.getGame().getCurrentRound() - 1);
                 break;
             case ROUNDADVANCER:
-                //dorost kardan
-//                game.setCurrentRound(game.getCurrentRound() + 1);
+                playingPlayer.getGame().setCurrentRound(playingPlayer.getGame().getCurrentRound() + 1);
                 break;
             case CARDDELETER:
                 //dorost kardan

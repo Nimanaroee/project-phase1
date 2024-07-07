@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/SpecialCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/game/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/game/GameBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +32,6 @@
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
   "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ParMosha"
   }
 }]]></component>
   <component name="GithubPullRequestsUISettings">
@@ -110,7 +111,7 @@
       <workItem from="1720100707984" duration="1797000" />
       <workItem from="1720179849642" duration="3224000" />
       <workItem from="1720247676910" duration="7213000" />
-      <workItem from="1720257616617" duration="4181000" />
+      <workItem from="1720257616617" duration="4943000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1720093063089</created>
@@ -158,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720264522496</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1720341549557</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720341549557</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

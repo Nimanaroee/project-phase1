@@ -40,6 +40,8 @@ public class Game {
         player2 = new Player(player2Name, LoadPlayerAvailableCardsFFromFile(player2Name));
         this.player1 = player1;
         this.player2 = player2;
+        this.player1.setGame(this);
+        this.player2.setGame(this);
         this.gameBoard = new GameBoard(player1, player2);
         this.coinManager = new CoinManager(player1, player2);
         this.uiManager = new UIManager(this);
@@ -85,7 +87,7 @@ public class Game {
         player2.drawCard();
         player1.playTurn(gameBoard, coinManager);
         player2.playTurn(gameBoard, coinManager);
-        if (currentRound == 3) {
+        if (currentRound >= 3) {
             endOfTheRound();
         }
         currentRound++;

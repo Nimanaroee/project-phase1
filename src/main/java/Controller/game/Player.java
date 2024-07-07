@@ -14,6 +14,7 @@ public class Player {
     private List<Card> discardPile;
     private int coins;
     private int health;
+    private Game game;
 
     public Player(String name, List<Card> availableCards) {
         this.name = name;
@@ -219,6 +220,14 @@ public class Player {
             Card.showCard(card);
             System.out.println("<><><><><><><><><><><><>");
         });
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }
 
