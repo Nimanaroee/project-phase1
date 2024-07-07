@@ -6,7 +6,9 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import Controller.CardToCardConvertor;
-import Model.*;
+import Model.GsonHandler;
+import Model.User;
+import Model.CardModel;
 
 public class Game {
     private Player player1, player2;

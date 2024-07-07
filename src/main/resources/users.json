@@ -1,2 +1,30 @@
-{"username":"nima","nickname":"nima","password":"!Nimaaaaa1","email":"nimakahd@gmail.com","question":"1","answer":"nima","Level":1,"xp":0,"gold":0,"cardModels":[],"histories":[],"character":1}
-{"username":"parham","nickname":"parham","password":"!Parhammmm1","email":"parmosha@gmail.com","question":"1","answer":"parham","Level":1,"xp":0,"gold":0,"cardModels":[],"histories":[],"character":1}
+[
+  {
+    "username": "nima",
+    "nickname": "nima",
+    "password": "!Nimaaaaa1",
+    "email": "nimakahd@gmail.com",
+    "question": "1",
+    "answer": "nima",
+    "Level": 1,
+    "xp": 0,
+    "gold": 0,
+    "cardModels": [],
+    "histories": [],
+    "character": 1
+  },
+  {
+    "username": "parham",
+    "nickname": "parham",
+    "password": "!Parhammmm1",
+    "email": "parmosha@gmail.com",
+    "question": "1",
+    "answer": "parham",
+    "Level": 1,
+    "xp": 0,
+    "gold": 0,
+    "cardModels": [],
+    "histories": [],
+    "character": 1
+  }
+]
