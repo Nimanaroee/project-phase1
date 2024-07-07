@@ -19,6 +19,12 @@ public class GameBoard {
             player1Board.add(null);
             player2Board.add(null);
         }
+
+        int randomBlock = (int) (Math.random() * 20);
+        player1Board.set(randomBlock, new Card("Block", 0, 0, 10000000, 1, 1));
+        randomBlock = (int) (Math.random() * 20);
+        player2Board.set(randomBlock, new Card("Block", 0, 0, 10000000, 1, 1));
+
     }
 
     public ArrayList<Card> getBoard(Player player) {
