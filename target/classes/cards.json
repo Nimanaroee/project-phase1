@@ -225,6 +225,42 @@
     "price": 0
   },
   {
+    "name": "1hider-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "1blocker-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "1poisoner-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "1changeBlocker-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
     "name": "2stealth−helper",
     "defence": 15,
     "duration": 1,
@@ -442,6 +478,42 @@
   },
   {
     "name": "2cardDeleter-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "2hider-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "2blocker-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "2poisoner-support",
+    "defence": 10,
+    "duration": 0,
+    "damage": 10,
+    "upgradeLevel": 1,
+    "upgradeCost": 10,
+    "price": 0
+  },
+  {
+    "name": "2changeBlocker-support",
     "defence": 10,
     "duration": 0,
     "damage": 10,
