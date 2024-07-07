@@ -4,6 +4,7 @@ import Controller.game.Game;
 import Model.*;
 import Veiw.Out;
 
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -38,21 +39,15 @@ public class PreGameMenu extends Menu {
         ///// مشخص کردن دک و کارت های هر بازیکن داخل ایف های خطوط پایینی
 
         if (firstCharacter.equals("1")) {
-
+            Data.getLoggedInUser1().setCharacter(1);
         } else if (firstCharacter.equals("2")) {
-
-        } else if (firstCharacter.equals("3")) {
-
-        } else {
-
+            Data.getLoggedInUser1().setCharacter(2);
         }
         if (secondCharacter.equals("1")) {
+            Data.getLoggedInUser2().setCharacter(1);
 
         } else if (secondCharacter.equals("2")) {
-
-        } else if (secondCharacter.equals("3")) {
-
-        } else {
+            Data.getLoggedInUser2().setCharacter(2);
 
         }
 
