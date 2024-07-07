@@ -1,14 +1,13 @@
 package Controller.game;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import Controller.CardToCardConvertor;
-import Model.GsonHandler;
-import Model.User;
-import Model.CardModel;
+import Model.*;
 
 public class Game {
     private Player player1, player2;
@@ -89,11 +88,15 @@ public class Game {
     }
 
     private void endGame() {
-        if (player1.getHealth() == 0) {
+        if (player1.getHealth() <= 0) {
             System.out.println(player2.getName() + " wins!");
         } else {
             System.out.println(player1.getName() + " wins!");
         }
+        User user1 = Data.getLoggedInUser1();
+        User user2 = Data.getLoggedInUser2();
+
+
     }
 
     private void playRound() {

@@ -102,4 +102,13 @@ public class CardModel {
         Data.updateCard(this);
     }
 
+    public void upgrade() {
+        this.upgradeLevel++;
+        this.damage += 10;
+        this.defence += 10;
+        this.duration += 1;
+        this.upgradeCost += 100;
+        Data.updateCard(this);
+    }
+
 }
