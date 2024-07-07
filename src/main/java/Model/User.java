@@ -182,4 +182,13 @@ public class User {
     public void setCharacter(int character) {
         this.character = character;
     }
+
+    public void setCardByName(String name, CardModel card) {
+        for (CardModel cardModel : this.cardModels) {
+            if (cardModel != null) {
+                if (cardModel.getName().equals(name))
+                    cardModel = card;
+            }
+        }
+    }
 }

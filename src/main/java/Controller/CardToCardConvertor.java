@@ -52,6 +52,22 @@ public class CardToCardConvertor {
                     cards.add(new SpecialCard(cardModel.getName(), "damager", 1, cardModel.getDamage(), cardModel.getDefence(), SpecialCard.SpecialCardType.DAMAGER));
                     continue;
                 }
+                if (cardModel.getName().contains("hider")) {
+                    cards.add(new SpecialCard(cardModel.getName(), "hider", 1, cardModel.getDamage(), cardModel.getDefence(), SpecialCard.SpecialCardType.HIDER));
+                    continue;
+                }
+                if (cardModel.getName().contains("poisoner")) {
+                    cards.add(new SpecialCard(cardModel.getName(), "poisoner", 1, cardModel.getDamage(), cardModel.getDefence(), SpecialCard.SpecialCardType.POISONER));
+                    continue;
+                }
+                if (cardModel.getName().contains("blocker")) {
+                    cards.add(new SpecialCard(cardModel.getName(), "poison", 1, cardModel.getDamage(), cardModel.getDefence(), SpecialCard.SpecialCardType.BLOCKER));
+                    continue;
+                }
+                if (cardModel.getName().contains("changeBlocker")) {
+                    cards.add(new SpecialCard(cardModel.getName(), "changeBlocker", 1, cardModel.getDamage(), cardModel.getDefence(), SpecialCard.SpecialCardType.CHANGEBLOCKPOSITION));
+                    continue;
+                }
 
             }
             cards.add(convertCardModelToCard(cardModel));

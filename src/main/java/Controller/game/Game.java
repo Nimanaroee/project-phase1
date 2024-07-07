@@ -105,7 +105,7 @@ public class Game {
         System.out.println("-----------------------");
         System.out.println("current round: " + currentRound);
         System.out.println("-----------------------");
-        gameBoard.showBoard();
+
         System.out.println("\n-----------------------");
         player1.drawCard();
         player2.drawCard();
@@ -136,6 +136,8 @@ public class Game {
                     if (player2card.getDefense() <= 0) {
                         gameBoard.getBoard(player2).remove(player2card);
                         player2.setHealth(player2.getHealth() - card.getDamage() + player2card.getDefense());
+                        player1.addACardToHand();
+                        //bonus for killing enemy card
 //                        System.out.println(player2.getHealth() + " " + card.getDamage() + " " + player2card.getDefense()  );
                     }
                 }
@@ -153,12 +155,21 @@ public class Game {
                     if (player1card.getDefense() <= 0) {
                         gameBoard.getBoard(player1).remove(player1card);
                         player1.setHealth(player1.getHealth() - card.getDamage() + player1card.getDefense());
+                        player2.addACardToHand();
 
 //                        System.out.println(player1.getHealth() + " " + card.getDamage() + " " + player1card.getDefense()  );
                     }
                 }
             }
         });
+        if (player1.getRoundPoisened() > 0) {
+            player1.setHealth(player1.getHealth() - 5);
+            player1.setRoundPoisened(player1.getRoundPoisened() - 1);
+        }
+        if (player2.getRoundPoisened() > 0) {
+            player2.setHealth(player2.getHealth() - 5);
+            player2.setRoundPoisened(player2.getRoundPoisened() - 1);
+        }
     }
 
     public int getCurrentRound() {

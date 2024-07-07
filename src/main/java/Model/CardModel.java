@@ -104,10 +104,9 @@ public class CardModel {
 
     public void upgrade() {
         this.upgradeLevel++;
-        this.damage += 10;
-        this.defence += 10;
-        this.duration += 1;
-        this.upgradeCost += 100;
+        this.damage += this.damage * 20 / 100;
+        this.defence += this.defence * 20 / 100;
+        this.upgradeCost += this.upgradeCost / 5;
         Data.updateCard(this);
     }
 

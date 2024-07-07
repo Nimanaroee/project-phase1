@@ -50,15 +50,34 @@ public class SpecialCard extends Card {
                 playingPlayer.getGame().setCurrentRound(playingPlayer.getGame().getCurrentRound() + 1);
                 break;
             case CARDDELETER:
-                //dorost kardan
-                board.getBoard(effectedPlayer).remove(position);
+                effectedPlayer.getHand().remove(position);
                 break;
             case CARDSTEALER:
-                //dorost kardan
+                Card stolenCard = effectedPlayer.getHand().remove(position);
+                playingPlayer.getHand().add(stolenCard);
                 break;
             case DAMAGER:
                 effectedPlayer.setHealth(effectedPlayer.getHealth() - attack);
+                break;
+            case HIDER:
+                effectedPlayer.hide = true;
+                break;
+            case BLOCKER:
+                board.getBoard(effectedPlayer).set(position, new Card("Block", 0, 0, 100000000, 0, 0));
+                break;
+            case POISONER:
+                effectedPlayer.setRoundPoisened(3);
+                break;
+            case CHANGEBLOCKPOSITION:
+                for (int i = 0; i < board.getBoard(playingPlayer).size(); i++) {
+                    if (board.getBoard(playingPlayer).get(i).getName().equals("Block")) {
+                        board.getBoard(playingPlayer).set(i, null);
+                        break;
+                    }
+                }
 
+                board.getBoard(playingPlayer).set(position, new Card("Block", 0, 0, 100000000, 0, 0));
+                break;
         }
 
     }
@@ -99,7 +118,11 @@ public class SpecialCard extends Card {
         ROUNDADVANCER,
         CARDDELETER,
         CARDSTEALER,
-        DAMAGER
+        HIDER,
+        BLOCKER,
+        POISONER,
+        DAMAGER,
+        CHANGEBLOCKPOSITION
     }
 
 

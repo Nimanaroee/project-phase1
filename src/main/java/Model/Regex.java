@@ -57,7 +57,7 @@ public enum Regex {
     HISTORY_NUMBERPAGE("page no (?<number>.+)"),
 
     ///// pre game menu
-    GAME_SELECT_CHARACTER("select character -(?<first>.+) -(?<second>.+)"),
+    GAME_SELECT_CHARACTER("select character starter pack -(?<first>.+) -(?<second>.+)"),
 
     ///// game menu
     SHOW_HAND_CARDS("show hand cards"),
@@ -77,6 +77,11 @@ public enum Regex {
         return pattern.matcher(input);
     }
 
-    public boolean matches(String input) { return pattern.matcher(input).matches();}
-    public String getCommand() { return pattern.toString();}
+    public boolean matches(String input) {
+        return pattern.matcher(input).matches();
+    }
+
+    public String getCommand() {
+        return pattern.toString();
+    }
 }

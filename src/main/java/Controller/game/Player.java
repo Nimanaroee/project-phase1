@@ -5,9 +5,12 @@ import Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
+    public boolean hide = false;
+    private int roundPoisened = 0;
     private String name;
     private List<Card> hand = new ArrayList<>();
     //fix 5 cards in hand
@@ -101,6 +104,9 @@ public class Player {
     }
 
     public void playTurn(GameBoard gameBoard, CoinManager coinManager) {
+        if (hide == false) {
+            gameBoard.showBoard();
+        }
         specialCards = new ArrayList<>();
         this.hand.forEach(card -> {
             if ((card instanceof SpecialCard)) {
@@ -112,7 +118,8 @@ public class Player {
         System.out.println("You have " + coins + " coins.");
         System.out.println("You have " + health + " health.");
         System.out.println("-----------------------");
-        this.showHand();
+        if (hide == false)
+            this.showHand();
         System.out.println("-----------------------");
         System.out.println("Do you want to play a normal card? (y/n)");
         String input = scanner.nextLine();
@@ -126,7 +133,7 @@ public class Player {
             playSpecialCard(gameBoard, coinManager);
         }
         System.out.println("-----------------------");
-
+        this.resetHide();
 
     }
 
@@ -214,6 +221,14 @@ public class Player {
             System.out.println("Invalid index");
             selectCardToPlay();
         }
+        if (hand.get(cardIndex).getName().equals(hand.get(2))) {
+            // with probability p=1/15, buff the card
+            Random random = new Random();
+            if (random.nextInt() % 15 == 0) {
+                hand.get(cardIndex).buffDefence(10);
+                hand.get(cardIndex).buffDamage(10);
+            }
+        }
         return hand.remove(cardIndex);
     }
 
@@ -252,5 +267,31 @@ public class Player {
         this.character = character;
     }
 
+    public List<Card> getHand() {
+        return hand;
+    }
+
+    public void resetHide() {
+        hide = false;
+    }
+
+    public int getRoundPoisened() {
+        return roundPoisened;
+    }
+
+    public void setRoundPoisened(int roundPoisened) {
+        this.roundPoisened = roundPoisened;
+    }
+
+    public void addACardToHand() {
+        deck.shuffle();
+        Card card = deck.destroy();
+        if (card == null) {
+            deck = new Deck(discardPile);
+            discardPile = new ArrayList<>();
+            card = deck.destroy();
+        }
+        hand.add(card);
+    }
 }
 

@@ -47,7 +47,7 @@ public class ShopMenu extends Menu {
             Out.print("not enouph money!");
             return;
         }
-        /////// upgrade card (((:
-        /////// idea for upgrading cards //////////
+        cardModel.upgrade();
+        Data.getLoggedInUser1().setCardByName(matcher.group("name"), cardModel);
     }
 }
