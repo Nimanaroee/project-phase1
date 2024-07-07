@@ -1,5 +1,8 @@
 package Controller.game;
 
+import Controller.CardToCardConvertor;
+import Model.User;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +19,8 @@ public class Player {
     private int health;
     private Game game;
 
+    private int character;
+
     public Player(String name, List<Card> availableCards) {
         this.name = name;
         this.availableCards = availableCards;
@@ -25,6 +30,15 @@ public class Player {
         health = 100;
     }
 
+    public Player(User user) {
+        this.name = user.getUsername();
+        this.availableCards = CardToCardConvertor.convertCardModelListToCardList(user.getAvailableCards());
+        deck = new Deck(availableCards);
+        discardPile = new ArrayList<>();
+        coins = 0;
+        health = 100;
+        this.character = user.getCharacter();
+    }
 
 //    public Deck chooseDeck() {
 //        availableCards.forEach(card -> {
@@ -229,5 +243,14 @@ public class Player {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public int getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(int character) {
+        this.character = character;
+    }
+
 }
 

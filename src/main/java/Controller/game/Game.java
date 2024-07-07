@@ -23,6 +23,14 @@ public class Game {
         currentRound = 1;
     }
 
+    public Game(User user1, User user2) {
+        initializePlayers(user1, user2);
+        gameBoard = new GameBoard(player1, player2);
+        uiManager = new UIManager(this);
+        coinManager = new CoinManager(player1, player2);
+        currentRound = 1;
+    }
+
     public void start() {
         while (!isGameOver()) {
             playRound();
@@ -38,6 +46,19 @@ public class Game {
         String player2Name = scanner.nextLine();
         player1 = new Player(player1Name, LoadPlayerAvailableCardsFFromFile(player1Name));
         player2 = new Player(player2Name, LoadPlayerAvailableCardsFFromFile(player2Name));
+        this.player1 = player1;
+        this.player2 = player2;
+        this.player1.setGame(this);
+        this.player2.setGame(this);
+        this.gameBoard = new GameBoard(player1, player2);
+        this.coinManager = new CoinManager(player1, player2);
+        this.uiManager = new UIManager(this);
+    }
+
+    private void initializePlayers(User user1, User user2) {
+
+        player1 = new Player(user1);
+        player2 = new Player(user2);
         this.player1 = player1;
         this.player2 = player2;
         this.player1.setGame(this);
