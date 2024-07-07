@@ -57,10 +57,8 @@ public class Game {
 
     private void initializePlayers(User user1, User user2) {
 
-        player1 = new Player(user1);
-        player2 = new Player(user2);
-        this.player1 = player1;
-        this.player2 = player2;
+        this.player1 = new Player(user1);
+        this.player2 = new Player(user2);
         this.player1.setGame(this);
         this.player2.setGame(this);
         this.gameBoard = new GameBoard(player1, player2);

@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/GameToMenuTranslator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,12 +29,6 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -114,7 +112,7 @@
       <workItem from="1720100707984" duration="1797000" />
       <workItem from="1720179849642" duration="3224000" />
       <workItem from="1720247676910" duration="7213000" />
-      <workItem from="1720257616617" duration="7619000" />
+      <workItem from="1720257616617" duration="7114000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1720093063089</created>
@@ -178,15 +176,7 @@
       <option name="project" value="LOCAL" />
       <updated>1720342140620</updated>
     </task>
-    <task id="LOCAL-00009" summary="Add files via upload">
-      <option name="closed" value="true" />
-      <created>1720344402534</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1720344402534</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
