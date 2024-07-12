@@ -1,13 +1,14 @@
 package Controller.game;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+
 import java.util.Scanner;
 
 import Controller.CardToCardConvertor;
+import Controller.PreGameMenu;
 import Model.*;
+import Veiw.Out;
 
 public class Game {
     private Player player1, player2;
@@ -88,14 +89,37 @@ public class Game {
     }
 
     private void endGame() {
-        if (player1.getHealth() <= 0) {
-            System.out.println(player2.getName() + " wins!");
-        } else {
-            System.out.println(player1.getName() + " wins!");
-        }
         User user1 = Data.getLoggedInUser1();
         User user2 = Data.getLoggedInUser2();
+        String date = LocalDateTime.now().toString();
 
+        if (player1.getHealth() <= 0) {
+            user1.addHistory(new DataHistory(date, Integer.toString(user2.getLevel()), user2.getUsername(), "loose", Integer.toString(-1 * PreGameMenu.gambleGolds)));
+            user2.addHistory(new DataHistory(date, Integer.toString(user1.getLevel()), user1.getUsername(), "win", Integer.toString(PreGameMenu.gambleGolds)));
+
+            user1.setGold(user1.getGold() - PreGameMenu.gambleGolds);
+            user2.setGold(user2.getGold() + PreGameMenu.gambleGolds);
+
+            user2.setXp(user2.getXp() + 45);
+
+            Out.print(player2.getName() + " wins!");
+            if (PreGameMenu.gambleGolds > 0)
+                Out.print(player2.getName() + " get " + PreGameMenu.gambleGolds + "gold and " + player1.getName() + "loose " + PreGameMenu.gambleGolds + " gold");
+
+        } else {
+            user1.addHistory(new DataHistory(date, Integer.toString(user2.getLevel()), user2.getUsername(), "win", Integer.toString(-1 * PreGameMenu.gambleGolds)));
+            user2.addHistory(new DataHistory(date, Integer.toString(user1.getLevel()), user1.getUsername(), "loose", Integer.toString(PreGameMenu.gambleGolds)));
+
+            user1.setGold(user1.getGold() + PreGameMenu.gambleGolds);
+            user2.setGold(user2.getGold() - PreGameMenu.gambleGolds);
+
+            user1.setXp(user1.getXp() + 45);
+
+            Out.print(player1.getName() + " wins!");
+            if (PreGameMenu.gambleGolds > 0)
+                Out.print(player1.getName() + " get " + PreGameMenu.gambleGolds + "gold and " + player2.getName() + "loose " + PreGameMenu.gambleGolds + " gold");
+
+        }
 
     }
 

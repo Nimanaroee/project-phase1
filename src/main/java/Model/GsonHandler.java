@@ -10,7 +10,6 @@ import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 
 public class GsonHandler {
-    private Gson gsonUser;
     private Gson gsonCard;
     private Gson gson = new Gson();
 
@@ -54,7 +53,7 @@ public class GsonHandler {
 
     public void saveUserGson() {
         GsonBuilder builder = new GsonBuilder();
-        gsonUser = builder.create();
+        Gson gsonUser = builder.create();
         try {
             FileWriter writer = new FileWriter("src/main/resources/users.json");
             BufferedWriter out = new BufferedWriter(writer);

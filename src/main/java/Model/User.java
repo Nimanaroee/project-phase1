@@ -124,13 +124,19 @@ public class User {
         this.gold = coins;
     }
 
-
     public int getXp() {
         return this.xp;
     }
 
-    private void setXp(int score) {
+    public void setXp(int score) {
         this.xp = score;
+        if (this.xp > 100)
+            this.setLevel();
+    }
+
+    public void setLevel() {
+        this.Level++;
+        this.setGold(this.getGold() + 250);
     }
 
     public ArrayList<CardModel> getCards() {
