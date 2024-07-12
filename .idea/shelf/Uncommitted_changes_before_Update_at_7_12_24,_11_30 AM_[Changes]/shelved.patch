@@ -1,0 +1,290 @@
+Index: src/main/java/Model/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Model;\n\nimport Controller.game.Card;\n\nimport java.util.ArrayList;\n\npublic class User {\n    private String username, nickname, password, email, question, answer;\n    private int Level = 1;\n    private int xp = 0;\n    private int gold = 0; ///// set value of gold\n    private ArrayList<CardModel> cardModels;\n    private ArrayList<DataHistory> histories;\n\n    private int character = 1;\n\n    public User(String username, String password, String email, String nickname) {\n        setUsername(username);\n        setPassword(password);\n        setEmail(email);\n        setNickname(nickname);\n        cardModels = new ArrayList<CardModel>();\n        histories = new ArrayList<>();\n    }\n\n    public User(String data) {\n    }\n\n//    public User(String username, String password, String email, int score, int coins, Card cards, String nickname, String question, String answer) {\n//        setUsername(username);\n//        setPassword(password);\n//        setEmail(email);\n//        setXp(score);\n//        setGold(coins);\n//        addCard(cards);\n//    }\n\n    public void addCard(CardModel cardModel) {\n        this.cardModels.add(cardModel);\n        Data.updateUser(this);\n    }\n\n    public void addHistory(DataHistory history) {\n        this.histories.add(history);\n        Data.updateUser(this);\n    }\n\n    ///////// after game update //////////\n    public void updateLevel() {\n    }\n\n    public void updateXp() {\n    }\n\n    public void updateHp() {\n    }\n\n    public void updateGold() {\n    }\n\n    public String getUsername() {\n        return this.username;\n    }\n\n    public void setUsername(String username) {\n        this.username = username;\n        Data.updateUser(this);\n    }\n\n    public String getNickname() {\n        return this.nickname;\n    }\n\n    public void setNickname(String nickname) {\n        this.nickname = nickname;\n        Data.updateUser(this);\n    }\n\n    public String getPassword() {\n        return this.password;\n    }\n\n    public void setPassword(String password) {\n        this.password = password;\n        Data.updateUser(this);\n    }\n\n    public String getEmail() {\n        return this.email;\n    }\n\n    public void setEmail(String email) {\n        this.email = email;\n        Data.updateUser(this);\n    }\n\n    public String getQuestion() {\n        return this.question;\n    }\n\n    public void setQuestion(String question) {\n        this.question = question;\n        Data.updateUser(this);\n    }\n\n    public String getAnswer() {\n        return this.answer;\n    }\n\n    public void setAnswer(String answer) {\n        this.answer = answer;\n        Data.updateUser(this);\n    }\n\n    public int getLevel() {\n        return this.Level;\n    }\n\n    public int getGold() {\n        return this.gold;\n    }\n\n    public void setGold(int coins) {\n        this.gold = coins;\n    }\n\n\n    public int getXp() {\n        return this.xp;\n    }\n\n    private void setXp(int score) {\n        this.xp = score;\n    }\n\n    public ArrayList<CardModel> getCards() {\n        return this.cardModels;\n    }\n\n    public String getXP() {\n        return String.valueOf(this.xp);\n    }\n\n    public String getCoins() {\n        return String.valueOf(this.gold);\n    }\n\n    public ArrayList<DataHistory> getHistories() {\n        return this.histories;\n    }\n\n    public CardModel getCardByName(String name) {\n        for (CardModel cardModel : this.cardModels) {\n            if (cardModel.getName().equals(name))\n                return cardModel;\n        }\n        return null;\n    }\n\n\n    public ArrayList<CardModel> getAvailableCards() {\n        GsonHandler gsonHandler = new GsonHandler();\n        Integer Character = getCharacter();\n        ArrayList<CardModel> cards = gsonHandler.readCardJSON();\n        cards.forEach(cardModel -> {\n            if (cardModel.getName().contains(Character.toString())) {\n                cardModels.add(cardModel);\n            }\n        });\n\n        return cardModels;\n    }\n\n    public void setCardModels(ArrayList<CardModel> cardModels) {\n        this.cardModels = cardModels;\n    }\n\n    public int getCharacter() {\n        return character;\n    }\n\n    public void setCharacter(int character) {\n        this.character = character;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Model/User.java b/src/main/java/Model/User.java
+--- a/src/main/java/Model/User.java	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/src/main/java/Model/User.java	(date 1720352770240)
+@@ -124,13 +124,19 @@
+         this.gold = coins;
+     }
+ 
+-
+     public int getXp() {
+         return this.xp;
+     }
+ 
+-    private void setXp(int score) {
++    public void setXp(int score) {
+         this.xp = score;
++        if (this.xp > 100)
++            this.setLevel();
++    }
++
++    public void setLevel() {
++        this.Level++;
++        this.setGold(this.getGold() + 250);
+     }
+ 
+     public ArrayList<CardModel> getCards() {
+Index: src/main/java/Model/GsonHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Model;\n\nimport com.google.gson.Gson;\nimport com.google.gson.GsonBuilder;\n\nimport java.io.*;\nimport java.util.ArrayList;\nimport java.lang.reflect.Type;\n\nimport com.google.gson.reflect.TypeToken;\n\npublic class GsonHandler {\n    private Gson gsonUser;\n    private Gson gsonCard;\n    private Gson gson = new Gson();\n\n//    public void readUserJSON() {\n//        GsonBuilder builder = new GsonBuilder();\n//        gsonUser = builder.create();\n//        try {\n//            BufferedReader bufferedReader = new BufferedReader(new FileReader(\"src/main/resources/users.json\"));\n//            ArrayList<User> users = new ArrayList<>();\n//            String line = null;\n//            while (true) {\n//                line = bufferedReader.readLine();\n//                if (line == null)\n//                    break;\n//                users.add(gsonUser.fromJson(line, User.class));\n//            }\n//            Data.setAllUsers(users);\n//        } catch (IOException e) {\n//            e.printStackTrace();\n//        }\n//    }\n\n    public ArrayList<User> readUserJSON() {\n        File file = new File(\"src/main/resources/users.json\");\n        ArrayList<User> users = new ArrayList<>();\n        // Check if file exists and is not empty\n        if (file.exists() && file.length() != 0) {\n            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {\n                Type userListType = new TypeToken<ArrayList<User>>() {\n                }.getType();\n                users = gson.fromJson(bufferedReader, userListType);\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        } else {\n            // Handle the case where the file is empty or doesn't exist\n            System.out.println(\"File is empty or does not exist. Returning an empty list.\");\n        }\n        return users;\n    }\n\n    public void saveUserGson() {\n        GsonBuilder builder = new GsonBuilder();\n        gsonUser = builder.create();\n        try {\n            FileWriter writer = new FileWriter(\"src/main/resources/users.json\");\n            BufferedWriter out = new BufferedWriter(writer);\n            writer.flush();\n            ArrayList<User> users = Data.getAllUser();\n            for (User user : users) {\n                out.write(gsonUser.toJson(user));\n                out.newLine();\n            }\n            out.close();\n            writer.close();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n    }\n\n    public ArrayList<CardModel> readCardJSON() {\n        GsonBuilder builder = new GsonBuilder();\n        gsonCard = builder.create();\n        ArrayList<CardModel> cardModels = new ArrayList<>();\n        try {\n            BufferedReader bufferedReader = new BufferedReader(new FileReader(\"src/main/resources/cards.json\"));\n            Type cardModelListType = new TypeToken<ArrayList<CardModel>>() {\n            }.getType();\n            cardModels = gsonCard.fromJson(bufferedReader, cardModelListType);\n            Data.setAllCards(cardModels);\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        return cardModels;\n    }\n\n    public void saveCardGson() {\n        GsonBuilder builder = new GsonBuilder();\n        gsonCard = builder.create();\n        try {\n            FileWriter writer = new FileWriter(\"src/main/resources/cards.json\");\n            BufferedWriter out = new BufferedWriter(writer);\n            ArrayList<CardModel> cardModels = Data.getAllCards();\n            for (CardModel cardModel : cardModels) {\n                out.write(gsonCard.toJson(cardModel));\n                out.newLine();\n            }\n            out.close();\n            writer.close();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        ;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Model/GsonHandler.java b/src/main/java/Model/GsonHandler.java
+--- a/src/main/java/Model/GsonHandler.java	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/src/main/java/Model/GsonHandler.java	(date 1720358876145)
+@@ -10,7 +10,6 @@
+ import com.google.gson.reflect.TypeToken;
+ 
+ public class GsonHandler {
+-    private Gson gsonUser;
+     private Gson gsonCard;
+     private Gson gson = new Gson();
+ 
+@@ -54,7 +53,7 @@
+ 
+     public void saveUserGson() {
+         GsonBuilder builder = new GsonBuilder();
+-        gsonUser = builder.create();
++        Gson gsonUser = builder.create();
+         try {
+             FileWriter writer = new FileWriter("src/main/resources/users.json");
+             BufferedWriter out = new BufferedWriter(writer);
+Index: src/main/java/Controller/game/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Controller.game;\n\nimport java.time.LocalTime;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.NoSuchElementException;\nimport java.util.Scanner;\n\nimport Controller.CardToCardConvertor;\nimport Model.*;\n\npublic class Game {\n    private Player player1, player2;\n    private GameBoard gameBoard;\n    private UIManager uiManager;\n    private CoinManager coinManager;\n    private int currentRound;\n\n    public Game() {\n        initializePlayers();\n        gameBoard = new GameBoard(player1, player2);\n        uiManager = new UIManager(this);\n        coinManager = new CoinManager(player1, player2);\n        currentRound = 1;\n    }\n\n    public Game(User user1, User user2) {\n        initializePlayers(user1, user2);\n        gameBoard = new GameBoard(player1, player2);\n        uiManager = new UIManager(this);\n        coinManager = new CoinManager(player1, player2);\n        currentRound = 1;\n    }\n\n    public void start() {\n        while (!isGameOver()) {\n            playRound();\n        }\n        endGame();\n    }\n\n    private void initializePlayers() {\n        Scanner scanner = new Scanner(System.in);\n        System.out.println(\"Enter player 1 username: \");\n        String player1Name = scanner.nextLine();\n        System.out.println(\"Enter player 2 username: \");\n        String player2Name = scanner.nextLine();\n        player1 = new Player(player1Name, LoadPlayerAvailableCardsFFromFile(player1Name));\n        player2 = new Player(player2Name, LoadPlayerAvailableCardsFFromFile(player2Name));\n        this.player1 = player1;\n        this.player2 = player2;\n        this.player1.setGame(this);\n        this.player2.setGame(this);\n        this.gameBoard = new GameBoard(player1, player2);\n        this.coinManager = new CoinManager(player1, player2);\n        this.uiManager = new UIManager(this);\n    }\n\n    private void initializePlayers(User user1, User user2) {\n\n        this.player1 = new Player(user1);\n        this.player2 = new Player(user2);\n        this.player1.setGame(this);\n        this.player2.setGame(this);\n        this.gameBoard = new GameBoard(player1, player2);\n        this.coinManager = new CoinManager(player1, player2);\n        this.uiManager = new UIManager(this);\n    }\n\n    private ArrayList<Card> LoadPlayerAvailableCardsFFromFile(String characterName) {\n        if (characterName.equals(\"1\")) {\n            ArrayList<Card> cards = new ArrayList<>();\n            GsonHandler gsonHandler = new GsonHandler();\n            cards = CardToCardConvertor.convertCardModelListToCardList(gsonHandler.readCardJSON());\n            return cards;\n\n        } else {\n            ArrayList<Card> cards = new ArrayList<>();\n            GsonHandler gsonHandler = new GsonHandler();\n            cards = CardToCardConvertor.convertCardModelListToCardList(gsonHandler.readCardJSON());\n            return cards;\n        }\n\n    }\n\n    private boolean isGameOver() {\n        return player1.getHealth() <= 0 || player2.getHealth() <= 0;\n    }\n\n    private void endGame() {\n        if (player1.getHealth() <= 0) {\n            System.out.println(player2.getName() + \" wins!\");\n        } else {\n            System.out.println(player1.getName() + \" wins!\");\n        }\n        User user1 = Data.getLoggedInUser1();\n        User user2 = Data.getLoggedInUser2();\n\n\n    }\n\n    private void playRound() {\n\n        uiManager.displayRound(currentRound);\n        System.out.println(\"-----------------------\");\n        System.out.println(\"current round: \" + currentRound);\n        System.out.println(\"-----------------------\");\n        gameBoard.showBoard();\n        System.out.println(\"\\n-----------------------\");\n        player1.drawCard();\n        player2.drawCard();\n        player1.playTurn(gameBoard, coinManager);\n        player2.playTurn(gameBoard, coinManager);\n        if (currentRound >= 3) {\n            endOfTheRound();\n        }\n        currentRound++;\n    }\n\n    private void endOfTheRound() {\n        System.out.println(\"End of round!\");\n        endOfTurn(player1, player2, gameBoard);\n        currentRound = 0;\n    }\n\n    public void endOfTurn(Player player1, Player player2, GameBoard gameBoard) {\n        gameBoard.getBoard(player1).forEach(card -> {\n            if (card == null) {\n            } else {\n                Card player2card = gameBoard.getOpossingCard(player1, player2, card);\n                if (player2card == null) {\n                    player2.setHealth(player2.getHealth() - card.getDamage());\n//                    System.out.println(player2.getHealth() + \" \" + card.getDamage());\n                } else {\n                    player2card.setDefense(player2card.getDefense() - card.getDamage());\n                    if (player2card.getDefense() <= 0) {\n                        gameBoard.getBoard(player2).remove(player2card);\n                        player2.setHealth(player2.getHealth() - card.getDamage() + player2card.getDefense());\n//                        System.out.println(player2.getHealth() + \" \" + card.getDamage() + \" \" + player2card.getDefense()  );\n                    }\n                }\n            }\n        });\n        gameBoard.getBoard(player2).forEach(card -> {\n            if (card == null) {\n            } else {\n                Card player1card = gameBoard.getOpossingCard(player2, player1, card);\n                if (player1card == null) {\n                    player1.setHealth(player1.getHealth() - card.getDamage());\n//                    System.out.println(player1.getHealth() + \" \" + card.getDamage());\n                } else {\n                    player1card.setDefense(player1card.getDefense() - card.getDamage());\n                    if (player1card.getDefense() <= 0) {\n                        gameBoard.getBoard(player1).remove(player1card);\n                        player1.setHealth(player1.getHealth() - card.getDamage() + player1card.getDefense());\n\n//                        System.out.println(player1.getHealth() + \" \" + card.getDamage() + \" \" + player1card.getDefense()  );\n                    }\n                }\n            }\n        });\n    }\n\n    public int getCurrentRound() {\n        return currentRound;\n    }\n\n    public void setCurrentRound(int currentRound) {\n        this.currentRound = currentRound;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controller/game/Game.java b/src/main/java/Controller/game/Game.java
+--- a/src/main/java/Controller/game/Game.java	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/src/main/java/Controller/game/Game.java	(date 1720352770161)
+@@ -1,13 +1,14 @@
+ package Controller.game;
+ 
+-import java.time.LocalTime;
++import java.time.LocalDateTime;
+ import java.util.ArrayList;
+-import java.util.List;
+-import java.util.NoSuchElementException;
++
+ import java.util.Scanner;
+ 
+ import Controller.CardToCardConvertor;
++import Controller.PreGameMenu;
+ import Model.*;
++import Veiw.Out;
+ 
+ public class Game {
+     private Player player1, player2;
+@@ -88,14 +89,37 @@
+     }
+ 
+     private void endGame() {
+-        if (player1.getHealth() <= 0) {
+-            System.out.println(player2.getName() + " wins!");
+-        } else {
+-            System.out.println(player1.getName() + " wins!");
+-        }
+         User user1 = Data.getLoggedInUser1();
+         User user2 = Data.getLoggedInUser2();
++        String date = LocalDateTime.now().toString();
++
++        if (player1.getHealth() <= 0) {
++            user1.addHistory(new DataHistory(date, Integer.toString(user2.getLevel()), user2.getUsername(), "loose", Integer.toString(-1 * PreGameMenu.gambleGolds)));
++            user2.addHistory(new DataHistory(date, Integer.toString(user1.getLevel()), user1.getUsername(), "win", Integer.toString(PreGameMenu.gambleGolds)));
++
++            user1.setGold(user1.getGold() - PreGameMenu.gambleGolds);
++            user2.setGold(user2.getGold() + PreGameMenu.gambleGolds);
++
++            user2.setXp(user2.getXp() + 45);
++
++            Out.print(player2.getName() + " wins!");
++            if (PreGameMenu.gambleGolds > 0)
++                Out.print(player2.getName() + " get " + PreGameMenu.gambleGolds + "gold and " + player1.getName() + "loose " + PreGameMenu.gambleGolds + " gold");
++
++        } else {
++            user1.addHistory(new DataHistory(date, Integer.toString(user2.getLevel()), user2.getUsername(), "win", Integer.toString(-1 * PreGameMenu.gambleGolds)));
++            user2.addHistory(new DataHistory(date, Integer.toString(user1.getLevel()), user1.getUsername(), "loose", Integer.toString(PreGameMenu.gambleGolds)));
++
++            user1.setGold(user1.getGold() + PreGameMenu.gambleGolds);
++            user2.setGold(user2.getGold() - PreGameMenu.gambleGolds);
++
++            user1.setXp(user1.getXp() + 45);
+ 
++            Out.print(player1.getName() + " wins!");
++            if (PreGameMenu.gambleGolds > 0)
++                Out.print(player1.getName() + " get " + PreGameMenu.gambleGolds + "gold and " + player2.getName() + "loose " + PreGameMenu.gambleGolds + " gold");
++
++        }
+ 
+     }
+ 
+Index: src/main/java/Controller/PreGameMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Controller;\n\nimport Controller.game.Game;\nimport Model.*;\nimport Veiw.Out;\n\nimport java.util.Date;\nimport java.util.Scanner;\nimport java.util.regex.Matcher;\n\npublic class PreGameMenu extends Menu {\n    public PreGameMenu(Scanner scanner, String menuName) {\n        super(scanner, menuName, \"back\");\n        /// add command\n        addCommand(Regex.LOGIN_LOGIN, this::login);\n        addCommand(Regex.GAME_SELECT_CHARACTER, this::selectCharacter);\n    }\n\n    private void login(Matcher matcher) {\n        User user = Data.getUserByUsername(matcher.group(\"username\"));\n        if (user == null) {\n            Out.print(\"Username doesn’t exist!\");\n            return;\n        }\n        if (!user.getPassword().equals(matcher.group(\"password\"))) {\n            Out.print(\"Password and Username don’t match!\");\n            return;\n        }\n        Out.print(\"user logged in successfully!\");\n        Data.setLoggedInUser2(user);\n    }\n\n    private void selectCharacter(Matcher matcher) {\n        String firstCharacter = matcher.group(\"first\");\n        String secondCharacter = matcher.group(\"second\");\n\n        ///// check valid characters //////\n        ///// select cards ///////\n        ///// مشخص کردن دک و کارت های هر بازیکن داخل ایف های خطوط پایینی\n\n        if (firstCharacter.equals(\"1\")) {\n            Data.getLoggedInUser1().setCharacter(1);\n        } else if (firstCharacter.equals(\"2\")) {\n            Data.getLoggedInUser1().setCharacter(2);\n        }\n        if (secondCharacter.equals(\"1\")) {\n            Data.getLoggedInUser2().setCharacter(1);\n\n        } else if (secondCharacter.equals(\"2\")) {\n            Data.getLoggedInUser2().setCharacter(2);\n\n        }\n\n        new Game(Data.getLoggedInUser1(), Data.getLoggedInUser2()).start();\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controller/PreGameMenu.java b/src/main/java/Controller/PreGameMenu.java
+--- a/src/main/java/Controller/PreGameMenu.java	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/src/main/java/Controller/PreGameMenu.java	(date 1720352305150)
+@@ -9,11 +9,17 @@
+ import java.util.regex.Matcher;
+ 
+ public class PreGameMenu extends Menu {
++    public static int gambleGolds = 0;
++
+     public PreGameMenu(Scanner scanner, String menuName) {
+         super(scanner, menuName, "back");
++
++        gambleGolds = 0;
++
+         /// add command
+         addCommand(Regex.LOGIN_LOGIN, this::login);
+         addCommand(Regex.GAME_SELECT_CHARACTER, this::selectCharacter);
++        addCommand(Regex.GAME_SELECT_GAMBLE_MODE, this::setGambleGolds);
+     }
+ 
+     private void login(Matcher matcher) {
+@@ -52,6 +58,25 @@
+         }
+ 
+         new Game(Data.getLoggedInUser1(), Data.getLoggedInUser2()).start();
++
++        Out.print("back to main menu!");
++        Data.setLoggedInUser2(null);
++        new MainMenu(scan);
++    }
++
++    private void setGambleGolds(Matcher matcher) {
++        int first = Integer.parseInt(matcher.group("first"));
++        int second = Integer.parseInt(matcher.group("second"));
++
++        if (Data.getLoggedInUser1().getGold() < first) {
++            Out.print("not enouph gold to gambling !");
++            return;
++        }
++        if (Data.getLoggedInUser2().getGold() < second) {
++            Out.print("not enouph gold to gambling !");
++            return;
++        }
++        PreGameMenu.gambleGolds = Math.min(first, second);
+     }
+ 
+ }
+Index: src/main/java/Model/Regex.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Model;\n\nimport java.util.regex.Matcher;\nimport java.util.regex.Pattern;\n\npublic enum Regex {\n    /////\n    INFO(\"info\"),\n    /// add regexes here\n    VALID_USERNAME(\"(?<username>[a-zA-Z0-9_]+)\"),\n    VALID_NICKNAME(\"(?<nickname>[a-zA-Z]+)\"),\n    VALID_EMAIL(\"(?<email>.+)@(?<domain>.+).com\"),\n    STRONG_PASSWORD(\"(^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[\\\\!\\\\@\\\\#\\\\$\\\\%\\\\^\\\\&\\\\*])[A-Za-z\\\\d\\\\!\\\\@\\\\#\\\\$\\\\%\\\\^\\\\&\\\\*]{8,20}$)\"),\n\n    /// login menu\n    LOGIN_CREATE_USER(\"user create -u +(?<username>.+) -p (?<password>.+) (?<passwordconfirm>.+) -email +(?<email>.+) -n (?<nickname>.+)\"),\n    LOGIN_CREATE_USER_WITH_PASSWORD(\"user create -u +(?<username>.+) -p random -email +(?<email>.+) -n (?<nickname>.+)\"),\n    LOGIN_QUESTION_PICK(\"question pick -q (?<number>[0-9]+) -a (?<answer>.+) -c (?<confirm>.+)\"),\n    LOGIN_FORGET_PASSWORD(\"Forgot my password -u (?<username>.+)\"),\n    LOGIN_LOGIN(\"user login -u (?<username>.+) -p (?<password>.+)\"),\n    LOGIN_ADMIN(\"user login admin admin\"),\n\n    //// Main menu\n    MAIN_START_GAME(\"start game\"),\n    MAIN_SHOW_CARDS(\"show cards\"),\n    MAIN_SHOW_USER_INFO(\"show info user\"),\n    MAIN_SHOW_HISTORY(\"show history\"),\n    MAIN_ENTER_SHOPMENU(\"enter shop menu\"),\n    MAIN_ENTER_PROFILEMENU(\"enter profile menu\"),\n\n    //// Profile menu\n    PROFILE_SHOW_INFORMATION(\"Show information\"),\n    PROFILE_CHANGE_USERNAME(\"Profile change -u (?<username>.+)\"),\n    PROFILE_CHANGE_NICKNAME(\"Profile change -n (?<nickname>.+)\"),\n    PROFILE_CHANGE_PASSWORD(\"profile change password -o (?<oldpassword>.+) -n (?<newpassword>.+)\"),\n    PROFILE_CHANGE_EMAIL(\"profile change -e (?<email>.+)\"),\n\n\n    //// Shop menu\n    SHOP_SHOW_ALL_CARDS(\"show all cards\"),\n    SHOP_UPGRADE_CARD(\"upgrade card -n (?<name>.+)\"),\n    SHOP_BUY_CARD(\"buy card -n (?<name>.+)\"),\n\n\n    /// admin menu\n    ADMIN_ADD_CARD(\"add card -name (?<name>.+) -attack (?<attack>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)\"),\n    ADMIN_UPDATE_CARD(\"update card -name (?<name>.+) -attack (?<attck>.+) -duration (?<duration>.+) -damage (?<damage>.+) -upgradeLevel (?<upgradeLevel>.+) -upgradeCost (?<upgradeCost>.+)\"),\n    ADMIN_DELETE_CARD(\"delete card -name (?<name>.+)\"),\n    ADMIN_SHOW_PLAYERS(\"show players\"),\n    ADMIN_SHOW_CARDS(\"show cards\"),\n\n\n    //// history menu\n    HISTORY_SORT(\"sort by (?<type>.+)\"),\n    HISTORY_NEXT_PAGE(\"next page\"),\n    HISTORY_PREVIOUS(\"previous page\"),\n    HISTORY_NUMBERPAGE(\"page no (?<number>.+)\"),\n\n    ///// pre game menu\n    GAME_SELECT_CHARACTER(\"select character -(?<first>.+) -(?<second>.+)\"),\n\n    ///// game menu\n    SHOW_HAND_CARDS(\"show hand cards\"),\n    SHOW_GAME_BOARD(\"show game board\"),\n    SELECT_CARD(\"select card -number (?<number>.+)\"),\n\n\n    ;\n\n    private final Pattern pattern;\n\n    Regex(String regex) {\n        pattern = Pattern.compile(regex);\n    }\n\n    public Matcher getMatcher(String input) {\n        return pattern.matcher(input);\n    }\n\n    public boolean matches(String input) { return pattern.matcher(input).matches();}\n    public String getCommand() { return pattern.toString();}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Model/Regex.java b/src/main/java/Model/Regex.java
+--- a/src/main/java/Model/Regex.java	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/src/main/java/Model/Regex.java	(date 1720351974806)
+@@ -58,6 +58,7 @@
+ 
+     ///// pre game menu
+     GAME_SELECT_CHARACTER("select character -(?<first>.+) -(?<second>.+)"),
++    GAME_SELECT_GAMBLE_MODE("set gamble gold -(?<first>[0-9]+) -(?<second>[0-9]+)"),
+ 
+     ///// game menu
+     SHOW_HAND_CARDS("show hand cards"),
+@@ -77,6 +78,11 @@
+         return pattern.matcher(input);
+     }
+ 
+-    public boolean matches(String input) { return pattern.matcher(input).matches();}
+-    public String getCommand() { return pattern.toString();}
++    public boolean matches(String input) {
++        return pattern.matcher(input).matches();
++    }
++
++    public String getCommand() {
++        return pattern.toString();
++    }
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"openjdk-21\" project-jdk-type=\"JavaSDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/.idea/misc.xml	(date 1720351974979)
+@@ -8,5 +8,5 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"afcb5e3f-5fe1-48d7-87f6-a1095605f53a\" name=\"Changes\" comment=\"Add files via upload\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller/game/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller/game/Game.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Main.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Model/CardModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Model/CardModel.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"FormatOnSaveOptions\">\n    <option name=\"myRunOnSave\" value=\"true\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">\n    <option name=\"selectedUrlAndAccountId\">\n      <UrlAndAccount>\n        <option name=\"accountId\" value=\"15ac22b9-c876-44f6-9986-2621d379cdf6\" />\n        <option name=\"url\" value=\"https://github.com/Nimanaroee/project-phase1\" />\n      </UrlAndAccount>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"2imPiN8rzxwmaT8njg96CC8twLp\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\n    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Unnamed\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\n      <module name=\"Battlesheet\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"afcb5e3f-5fe1-48d7-87f6-a1095605f53a\" name=\"Changes\" comment=\"\" />\n      <created>1720092906058</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1720092906058</updated>\n      <workItem from=\"1720092907265\" duration=\"174000\" />\n      <workItem from=\"1720093152582\" duration=\"841000\" />\n      <workItem from=\"1720100707984\" duration=\"1797000\" />\n      <workItem from=\"1720179849642\" duration=\"3224000\" />\n      <workItem from=\"1720247676910\" duration=\"7213000\" />\n      <workItem from=\"1720257616617\" duration=\"7114000\" />\n      <workItem from=\"1720348208241\" duration=\"21000\" />\n      <workItem from=\"1720348249085\" duration=\"798000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Add files via upload\">\n      <created>1720093063089</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720093063089</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add files via upload\">\n      <created>1720093275896</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720093275896</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720258487424</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720258487424</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720258520006</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720258520006</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720264455879</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720264455879</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720264522496</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720264522496</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720341549557</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720341549557</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720342140620</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720342140620</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Add files via upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1720348682982</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1720348682982</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"10\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add files via upload\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add files via upload\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision fc92013630b95dc53c5671c50b713413a24a8d88)
++++ b/.idea/workspace.xml	(date 1720604694026)
+@@ -5,10 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="afcb5e3f-5fe1-48d7-87f6-a1095605f53a" name="Changes" comment="Add files via upload">
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PreGameMenu.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/game/Game.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/CardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/CardModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GsonHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Regex.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -73,17 +76,6 @@
+     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+       <module name="Battlesheet" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration default="true" type="JetRunConfigurationType">
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+-      <option name="filePath" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -112,6 +104,11 @@
+       <workItem from="1720257616617" duration="7114000" />
+       <workItem from="1720348208241" duration="21000" />
+       <workItem from="1720348249085" duration="798000" />
++      <workItem from="1720349864256" duration="2783000" />
++      <workItem from="1720355581256" duration="58000" />
++      <workItem from="1720358803913" duration="73000" />
++      <workItem from="1720364748842" duration="21000" />
++      <workItem from="1720604645883" duration="49000" />
+     </task>
+     <task id="LOCAL-00001" summary="Add files via upload">
+       <created>1720093063089</created>
